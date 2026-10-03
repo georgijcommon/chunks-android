@@ -10,8 +10,8 @@ android {
         applicationId 'app.chunks.trainer'
         minSdk 26
         targetSdk 34
-        versionCode 1
-        versionName '1.0'
+        versionCode 2
+        versionName '1.1'
     }
 
     // Один и тот же ключ подписи при каждой сборке: новая версия ставится
@@ -35,4 +35,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+}
+
+dependencies {
+    // Перевод на самом устройстве: модель скачивается один раз, дальше работает без сети.
+    implementation 'com.google.mlkit:translate:17.0.3'
 }

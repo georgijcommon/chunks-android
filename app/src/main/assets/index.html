@@ -3,110 +3,146 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Тренажёр чанков</title>
+<title>Чанки</title>
 <style>
 :root{
-  --bg:#f5f2ea; --surface:#fffdf8; --ink:#1d2321; --muted:#68706b; --line:#ddd8cb;
-  --accent:#0e6656; --accent-ink:#ffffff; --accent-soft:#dbeae5;
-  --again:#a8392f; --hard:#9a6a12; --good:#0e6656; --easy:#2c5a9e;
-  --bad-soft:#f4dfdb; --mark:#fbe9a8;
-  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --bg:#f3f7fc; --surface:#ffffff; --ink:#0a1f3d; --muted:#5a6b85; --line:#dce5f0;
+  --accent:#1b4fe0; --accent-ink:#ffffff; --soft:#e6eefd; --sky:#58b4ff;
+  --again:#c2412f; --hard:#a26a00; --good:#0f7b6c; --easy:#1b4fe0;
+  --bad-soft:#fbe6e2; --good-soft:#dff3ee; --mark:#cfe2ff;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Noto Serif",Georgia,serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){
   :root{
-    --bg:#131715; --surface:#1b201e; --ink:#e7eae5; --muted:#98a19b; --line:#2e3532;
-    --accent:#5cc0aa; --accent-ink:#0d1513; --accent-soft:#1f3a34;
-    --again:#e2786d; --hard:#d9a646; --good:#5cc0aa; --easy:#7fa8e6;
-    --bad-soft:#3a2522; --mark:#4d4420;
+    --bg:#071120; --surface:#0e1b30; --ink:#e9f0fc; --muted:#8c9db8; --line:#1d2c45;
+    --accent:#7aa7ff; --accent-ink:#06132a; --soft:#14284a; --sky:#8fd0ff;
+    --again:#ff8f80; --hard:#e6b450; --good:#5fd0bd; --easy:#7aa7ff;
+    --bad-soft:#3a1d1a; --good-soft:#0f302b; --mark:#1f3f78;
   }
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;
-  -webkit-text-size-adjust:100%;min-height:100vh}
+  -webkit-text-size-adjust:100%;min-height:100vh;-webkit-tap-highlight-color:transparent}
 button{font:inherit;color:inherit;cursor:pointer}
-.app{max-width:560px;margin:0 auto;padding:16px 16px 40px}
-header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 20px}
-.brand{font-family:var(--serif);font-size:20px;letter-spacing:.01em}
-nav{display:flex;gap:4px;flex-wrap:wrap}
-nav button{background:none;border:0;padding:8px 10px;border-radius:8px;color:var(--muted);font-size:14px}
-nav button[aria-current=page]{color:var(--ink);background:var(--accent-soft)}
-h1{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.2;margin:0 0 8px;text-wrap:balance}
-h2{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:28px 0 10px}
+a{color:var(--accent)}
+.app{max-width:560px;margin:0 auto;padding:24px 20px 112px}
+.app.bare{padding-bottom:40px}
+h1{font-weight:300;font-size:32px;line-height:1.15;letter-spacing:-.01em;margin:0 0 6px;text-wrap:balance}
+h2{font-size:15px;font-weight:600;color:var(--ink);margin:32px 0 12px}
 p{margin:0 0 12px}
 .muted{color:var(--muted)}
 .small{font-size:14px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.stat b{display:block;font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
-.stat span{font-size:13px;color:var(--muted)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 18px;border-radius:12px;
+.center{text-align:center}
+
+/* кольца прогресса */
+.ring{position:relative;display:inline-grid;place-items:center;flex:none}
+.ring svg{display:block;transform:rotate(-90deg)}
+.ring .track{stroke:var(--line);fill:none}
+.ring .arc{fill:none;stroke-linecap:round;transition:stroke-dashoffset .5s ease}
+.ring .in{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.hero{display:grid;justify-items:center;gap:6px;margin:18px 0 26px}
+.hero .num{font-weight:200;font-size:72px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.hero .cap{font-size:14px;color:var(--muted)}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:30px 0 8px}
+.trio .cell{display:grid;justify-items:center;gap:8px;text-align:center}
+.trio .val{font-size:17px;font-weight:500;font-variant-numeric:tabular-nums}
+.trio .lbl{font-size:13px;color:var(--muted);line-height:1.3}
+.mini .val{font-size:10px;font-weight:600}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:10px 22px;border-radius:999px;
   border:1px solid var(--line);background:var(--surface);font-weight:600}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .btn.block{display:flex;width:100%}
-.btn:disabled{opacity:.45;cursor:default}
-.btn.ghost{background:none;border-color:transparent;color:var(--muted);font-weight:500;min-height:40px}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.ghost{background:none;border-color:transparent;color:var(--accent);font-weight:500;min-height:42px}
+.btn.quiet{color:var(--muted)}
 .row{display:flex;gap:10px;flex-wrap:wrap}
-.progress{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:18px}
-.progress i{display:block;height:100%;background:var(--accent);transition:width .25s}
-.stage{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.actions{margin-top:20px;display:grid;gap:8px}
+
+.card{background:var(--surface);border-radius:24px;padding:24px 22px;border:1px solid var(--line)}
+.sbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.sbar .left{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stage{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:10px}
 .task{font-size:15px;color:var(--muted);margin-bottom:14px}
 .chunk{font-family:var(--serif);font-size:32px;line-height:1.15;margin:4px 0 6px;overflow-wrap:anywhere}
 .ru{font-size:18px;margin-bottom:14px}
-.en{font-family:var(--serif);font-size:20px;line-height:1.45}
+.en{font-family:var(--serif);font-size:20px;line-height:1.5}
 ul.examples{list-style:none;margin:0 0 6px;padding:0}
-ul.examples li{font-family:var(--serif);font-size:18px;padding:8px 0;border-top:1px solid var(--line)}
-.note{font-size:14px;border-left:3px solid var(--hard);padding:4px 0 4px 12px;margin:14px 0 0;color:var(--muted)}
+ul.examples li{font-family:var(--serif);font-size:18px;line-height:1.5;padding:10px 0;border-top:1px solid var(--line)}
+.note{font-size:14px;background:var(--soft);border-radius:12px;padding:10px 14px;margin:14px 0 0;color:var(--muted)}
 .note b{color:var(--ink);font-weight:600}
-.tokens{font-family:var(--serif);font-size:22px;line-height:2;margin-bottom:16px}
-.tok{display:inline-block;padding:0 3px;margin:0;border-radius:6px;border:1px solid transparent;background:none;font:inherit;color:inherit}
-.tok.word{border-bottom:1px dashed var(--line)}
+.tokens{font-family:var(--serif);font-size:22px;line-height:1.9;margin-bottom:16px}
+.tok{display:inline-block;padding:0 4px;margin:0;border-radius:7px;border:0;background:none;font:inherit;color:inherit}
 .tok.sel{background:var(--mark)}
-.tok.right{background:var(--accent-soft);border-color:var(--accent)}
+.tok.right{background:var(--good-soft);color:var(--good)}
 .tok.wrong{background:var(--bad-soft)}
 .opts{display:grid;gap:10px;margin:14px 0 8px}
-.opt{text-align:left;min-height:52px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);font-size:17px}
-.opt.right{border-color:var(--good);background:var(--accent-soft)}
+.opt{text-align:left;min-height:54px;padding:12px 18px;border-radius:16px;border:1px solid var(--line);background:var(--surface);font-size:17px}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
 .opt.wrong{border-color:var(--again);background:var(--bad-soft)}
 input[type=text],textarea,input[type=number],select{width:100%;font:inherit;color:var(--ink);background:var(--bg);
-  border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-textarea{min-height:92px;resize:vertical;font-family:var(--serif);font-size:18px}
-input[type=text]{font-family:var(--serif);font-size:20px}
-input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+textarea{min-height:92px;resize:vertical}
+textarea.en,input.en{font-family:var(--serif);font-size:19px}
+input:focus,textarea:focus,select:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .verdict{font-weight:600;margin:14px 0 6px}
 .verdict.ok{color:var(--good)} .verdict.no{color:var(--again)}
-.model{background:var(--accent-soft);border-radius:10px;padding:12px 14px;margin:8px 0 4px}
-.model .lbl,.yours .lbl{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
-.yours{border:1px dashed var(--line);border-radius:10px;padding:12px 14px;margin:12px 0 4px}
+.model{background:var(--soft);border-radius:14px;padding:12px 16px;margin:8px 0 4px}
+.lbl{font-size:13px;color:var(--muted);display:block;margin-bottom:2px}
 .rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
-.rate button{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 4px;min-height:60px;
+.rate button{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:10px 4px;min-height:62px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-.rate button b{font-size:15px}
+.rate button b{font-size:15px;font-weight:600}
 .rate button span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
 .rate .g1 b{color:var(--again)} .rate .g2 b{color:var(--hard)} .rate .g3 b{color:var(--good)} .rate .g4 b{color:var(--easy)}
 .rate button.suggest{border-width:2px;border-color:currentColor}
 .rate .g1.suggest{color:var(--again)} .rate .g2.suggest{color:var(--hard)} .rate .g3.suggest{color:var(--good)} .rate .g4.suggest{color:var(--easy)}
 .legend{font-size:13px;color:var(--muted);margin-top:10px}
-.actions{margin-top:18px;display:grid;gap:8px}
-.topic{margin-top:22px}
-details.item{border-top:1px solid var(--line);padding:10px 0}
-details.item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-details.item summary::-webkit-details-marker{display:none}
-details.item .e{font-family:var(--serif);font-size:19px;overflow-wrap:anywhere}
-details.item .r{font-size:14px;color:var(--muted)}
-.chip{flex:none;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
-.chip.due{border-color:var(--accent);color:var(--accent)}
-.chip.leech{border-color:var(--again);color:var(--again)}
+
+/* списки */
+.list{border-top:1px solid var(--line)}
+.item{border-bottom:1px solid var(--line);padding:14px 0}
+.item summary,.item .head{list-style:none;cursor:pointer;display:flex;gap:14px;align-items:center}
+.item summary::-webkit-details-marker{display:none}
+.item .txt{flex:1;min-width:0}
+.item .e{font-family:var(--serif);font-size:19px;line-height:1.3;overflow-wrap:anywhere}
+.item .r{font-size:14px;color:var(--muted)}
+.item .when{flex:none;font-size:12px;color:var(--muted);white-space:nowrap}
+.item .when.due{color:var(--accent);font-weight:600}
+.item .when.leech{color:var(--again)}
+.chips{display:flex;gap:8px;margin:16px 0 14px;flex-wrap:wrap}
+.chips button{border:1px solid var(--line);background:none;border-radius:999px;padding:7px 14px;font-size:14px;color:var(--muted)}
+.chips button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .field{margin-bottom:16px}
-.field label{display:block;font-weight:600;margin-bottom:4px}
-.field .hint{font-size:13px;color:var(--muted);margin-top:4px}
-.banner{background:var(--bad-soft);border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:16px}
-.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);
-  padding:10px 16px;border-radius:10px;font-size:14px;max-width:calc(100% - 32px)}
-@media (max-width:380px){.chunk{font-size:27px}.rate button b{font-size:14px}}
-@media (prefers-reduced-motion:reduce){.progress i{transition:none}}
+.field label{display:block;font-weight:600;margin-bottom:6px}
+.field .hint{font-size:13px;color:var(--muted);margin-top:6px}
+.banner{background:var(--bad-soft);border-radius:14px;padding:10px 14px;font-size:14px;margin-bottom:16px}
+
+/* чтение */
+.reader{font-family:var(--serif);font-size:20px;line-height:1.7}
+.reader p{margin:0 0 18px}
+.reader .s{border-radius:6px;cursor:pointer;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:1px 0}
+.reader .s.on{background:var(--mark)}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);
+  border-radius:24px 24px 0 0;box-shadow:0 -12px 40px rgba(10,31,61,.14);max-height:72vh;overflow:auto}
+.sheet .inner{max-width:560px;margin:0 auto;padding:18px 20px calc(18px + env(safe-area-inset-bottom))}
+.sheet .tokens{font-size:20px;line-height:1.8;margin-bottom:8px}
+.sheet .tr{font-size:16px;margin:4px 0 12px}
+.sheet .x{position:sticky;top:0;float:right;border:0;background:var(--soft);border-radius:999px;width:36px;height:36px;font-size:18px;line-height:1;color:var(--muted)}
+
+/* нижняя панель */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;background:color-mix(in srgb,var(--surface) 92%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.tabs .inner{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+.tabs button{border:0;background:none;display:grid;justify-items:center;gap:2px;padding:8px 2px;font-size:11px;color:var(--muted);border-radius:14px}
+.tabs button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tabs button[aria-current=page]{color:var(--accent)}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--bg);
+  padding:10px 18px;border-radius:999px;font-size:14px;max-width:calc(100% - 32px);text-align:center}
+@media (max-width:380px){.chunk{font-size:27px}.hero .num{font-size:60px}.rate button b{font-size:14px}}
+@media (prefers-reduced-motion:reduce){.ring .arc{transition:none}}
 </style>
 </head>
 <body>
@@ -176,9 +212,12 @@ const BUILTIN = {"format":"chunk-deck/1","id":"everyday-1","title":"Повсед
 'use strict';
 const KEY = 'chunk-trainer/v1';
 const DAY = 864e5;
-const LEECH = 8;          // столько оценок Again делают чанк «пиявкой»
+const LEECH = 8;          // столько оценок Again делают карточку «трудной»
 const MATURE = 7;         // стабильность в днях, после которой идут свободные задания
+const FULL = 21;          // стабильность, при которой кольцо карточки замыкается
+const PER_LEVEL = 5;      // столько закреплённых карточек даёт один уровень
 const GRADES = ['', 'Again', 'Hard', 'Good', 'Easy'];
+const MY = 'my';
 
 // ---------- хранилище ----------
 let storageOk = true;
@@ -189,15 +228,25 @@ function load() {
 function save() {
   try { localStorage.setItem(KEY, JSON.stringify(state)); storageOk = true; }
   catch (e) { storageOk = false; }
+  return storageOk;
 }
 function fresh() {
   return { v: 1, settings: { newPerDay: 5, maxReviews: 50, retention: 0.9 }, decks: {}, cards: {}, log: [],
-    day: { date: '', introduced: 0, reviewed: 0 } };
+    day: { date: '', introduced: 0, reviewed: 0 }, texts: [], my: [] };
 }
-let state = Object.assign(fresh(), load() || {});
-state.settings = Object.assign(fresh().settings, state.settings || {});
+function adopt(raw) {
+  const s = Object.assign(fresh(), raw || {});
+  s.settings = Object.assign(fresh().settings, s.settings || {});
+  if (!Array.isArray(s.texts)) s.texts = [];
+  if (!Array.isArray(s.my)) s.my = [];
+  if (!s.cards || typeof s.cards !== 'object') s.cards = {};
+  if (!s.decks || typeof s.decks !== 'object') s.decks = {};
+  if (!Array.isArray(s.log)) s.log = [];
+  return s;
+}
+let state = adopt(load());
 
-// ---------- даты ----------
+// ---------- даты и слова ----------
 const dayNum = (ms = Date.now()) => { const d = new Date(ms); return Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / DAY); };
 const dayKey = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
 function rollDay() {
@@ -212,16 +261,41 @@ function plural(n, one, few, many) {
   const a = n % 10, b = n % 100;
   return (a === 1 && b !== 11) ? one : (a >= 2 && a <= 4 && (b < 12 || b > 14)) ? few : many;
 }
+const core = s => s.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '');
+const isRu = s => { const l = s.match(/\p{L}/gu) || []; return l.length > 0 && l.filter(ch => /[а-яё]/i.test(ch)).length / l.length > 0.5; };
 
 // ---------- колоды ----------
-function allDecks() { return [BUILTIN].concat(Object.values(state.decks)); }
+// Свои слова и выражения хранятся коротко; недостающие поля упражнений достраиваются здесь.
+function expand(m) {
+  const c = { id: m.id, en: m.en, ru: m.ru, type: m.type, topic: 'Из моих текстов', auto: true, src: m.src || '' };
+  const b = m.ctx && m.ctx.match(/^(.*?)\[(.+?)\](.*)$/);
+  if (b && (b[1].trim() || b[3].trim())) {
+    const inner = core(b[2]), plain = b[1] + b[2] + b[3];
+    c.ctx = m.ctx; c.ex = [plain];
+    c.gaps = [{ s: b[1] + b[2].replace(inner, '___') + b[3], ru: m.ru, a: [inner, m.en] }];
+    c.free = { q: 'Составьте своё предложение с этим выражением.', sample: plain };
+  } else {
+    c.ex = b ? [b[2]] : []; c.gaps = [];
+    c.free = { q: 'Составьте своё предложение с этим выражением.', sample: m.en };
+  }
+  c.tr = { ru: m.ru, en: m.en };
+  return c;
+}
+function myDeck() { return { id: MY, title: 'Мои слова и выражения', mine: true, chunks: state.my.map(expand) }; }
+function allDecks() {
+  const d = [BUILTIN].concat(Object.values(state.decks));
+  if (state.my.length) d.push(myDeck());
+  return d;
+}
 function allChunks() {
   const out = [];
   for (const d of allDecks()) for (const c of d.chunks) out.push(Object.assign({ key: d.id + '/' + c.id, deck: d }, c));
   return out;
 }
+const kindOf = c => c.type || (/\s/.test(c.en.trim()) ? 'chunk' : 'word');
 function validDeck(d) {
   if (!d || d.format !== 'chunk-deck/1' || typeof d.id !== 'string' || !Array.isArray(d.chunks) || !d.chunks.length) return 'Это не файл колоды.';
+  if (d.id === MY) return 'Колода с таким идентификатором занята.';
   for (const c of d.chunks) {
     const ok = c && typeof c.id === 'string' && typeof c.en === 'string' && typeof c.ru === 'string' &&
       Array.isArray(c.ex) && typeof c.ctx === 'string' && /\[.+\]/.test(c.ctx) &&
@@ -235,52 +309,69 @@ function validDeck(d) {
   return '';
 }
 
-// ---------- очередь занятия ----------
-function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+// ---------- прогресс ----------
+const mastery = k => k ? Math.min(1, k.s / FULL) : 0;
 function counts() {
   rollDay();
   const today = dayNum(), chunks = allChunks();
-  let due = 0, fresh_ = 0, learning = 0, mature = 0, leech = 0;
+  const n = { total: chunks.length, due: 0, fresh: 0, leech: 0, points: 0,
+    word: { n: 0, m: 0 }, chunk: { n: 0, m: 0 } };
   for (const c of chunks) {
-    const k = state.cards[c.key];
-    if (!k) { fresh_++; continue; }
-    if (k.due <= today) due++;
-    if (k.lapses >= LEECH) leech++;
-    if (k.s >= 21) mature++; else learning++;
+    const k = state.cards[c.key], t = n[kindOf(c) === 'word' ? 'word' : 'chunk'];
+    t.n++; t.m += mastery(k); n.points += mastery(k);
+    if (!k) { n.fresh++; continue; }
+    if (k.due <= today) n.due++;
+    if (k.lapses >= LEECH) n.leech++;
   }
-  const newLeft = Math.max(0, Math.min(fresh_, state.settings.newPerDay - state.day.introduced));
-  return { total: chunks.length, due, fresh: fresh_, learning, mature, leech, newLeft };
+  n.due = Math.min(n.due, state.settings.maxReviews);
+  n.newLeft = Math.max(0, Math.min(n.fresh, state.settings.newPerDay - state.day.introduced));
+  n.done = state.day.introduced + state.day.reviewed;
+  n.level = Math.floor(n.points / PER_LEVEL) + 1;
+  n.levelPct = (n.points % PER_LEVEL) / PER_LEVEL;
+  return n;
 }
-// Новые чанки берутся по кругу из разных тем, чтобы темы перемешивались.
+
+// ---------- очередь занятия ----------
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+// Сначала свои слова и выражения, затем встроенные по кругу из разных тем, чтобы темы перемешивались.
 function pickNew(n) {
-  const byTopic = new Map();
+  const byTopic = new Map(), out = [];
   for (const c of allChunks()) {
     if (state.cards[c.key]) continue;
+    if (c.auto) { if (out.length < n) out.push(c); continue; }
     const t = c.topic || '';
     if (!byTopic.has(t)) byTopic.set(t, []);
     byTopic.get(t).push(c);
   }
-  const lists = [...byTopic.values()], out = [];
+  const lists = [...byTopic.values()];
   for (let i = 0; out.length < n && lists.some(l => l.length); i++) {
     const l = lists[i % lists.length];
     if (l.length) out.push(l.shift());
   }
   return out;
 }
+const gapKinds = c => c.gaps.map((_, i) => 'gap' + i);
 function reviewExercise(c, card) {
-  const pool = card.s >= MATURE ? ['free', 'tr'] : c.gaps.map((_, i) => 'gap' + i).concat(['tr']);
+  const pool = card.s >= MATURE ? ['free', 'tr'] : gapKinds(c).concat(['tr']);
   const choices = pool.filter(x => x !== card.lastEx);
-  return (choices.length ? choices : pool)[Math.floor(Math.random() * (choices.length || pool.length))];
+  const from = choices.length ? choices : pool;
+  return from[Math.floor(Math.random() * from.length)];
 }
 function buildSession(extraNew) {
   const today = dayNum(), n = counts();
   const due = allChunks().filter(c => state.cards[c.key] && state.cards[c.key].due <= today)
     .sort((a, b) => state.cards[a.key].due - state.cards[b.key].due).slice(0, state.settings.maxReviews);
-  const queue = shuffle(due).map(c => ({ c, kind: reviewExercise(c, state.cards[c.key]), graded: true }));
+  const queue = shuffle(due).map(c => ({ c, kind: reviewExercise(c, state.cards[c.key]) }));
   const news = pickNew(extraNew ? Math.min(n.fresh, extraNew) : n.newLeft);
-  for (const c of news) for (const kind of ['intro', 'notice', 'meaning', 'form']) queue.push({ c, kind });
-  for (const c of shuffle(news.slice())) queue.push({ c, kind: 'gap0', graded: true, first: true });
-  return { queue, pos: 0, total: queue.length, done: 0, again: 0, introduced: news.length, ratings: [0, 0, 0, 0, 0] };
+  for (const c of news) {
+    const steps = ['intro'];
+    if (c.ctx) steps.push('notice');
+    steps.push('meaning');
+    if (c.form) steps.push('form');
+    for (const kind of steps) queue.push({ c, kind });
+  }
+  for (const c of shuffle(news.slice())) queue.push({ c, kind: c.gaps.length ? 'gap0' : 'tr' });
+  return { queue, pos: 0, total: queue.length, done: 0, introduced: news.length, ratings: [0, 0, 0, 0, 0] };
 }
 
 // ---------- оценка ----------
@@ -302,6 +393,29 @@ function applyRating(item, g, info) {
   save();
 }
 
+// ---------- перевод ----------
+// В приложении для Android переводит модель на самом телефоне. В браузере используется
+// встроенный переводчик, если он есть; иначе перевод вписывается вручную.
+const trCache = new Map(), trWait = new Map();
+let trSeq = 0;
+window.onTranslated = (id, ok, text) => { const f = trWait.get(id); if (f) { trWait.delete(id); f(ok ? text : null); } };
+const canTranslate = () => !!(window.Android && Android.translate) || ('Translator' in self);
+function translate(text, from, to) {
+  const key = from + '>' + to + '|' + text;
+  if (trCache.has(key)) return Promise.resolve(trCache.get(key));
+  let p;
+  if (window.Android && Android.translate) {
+    p = new Promise(res => {
+      const id = ++trSeq; trWait.set(id, res);
+      setTimeout(() => { if (trWait.has(id)) { trWait.delete(id); res(null); } }, 120000);
+      Android.translate(id, text, from, to);
+    });
+  } else if ('Translator' in self) {
+    p = self.Translator.create({ sourceLanguage: from, targetLanguage: to }).then(t => t.translate(text)).catch(() => null);
+  } else p = Promise.resolve(null);
+  return p.then(r => { if (r) trCache.set(key, r); return r; });
+}
+
 // ---------- DOM ----------
 function h(tag, attrs, ...kids) {
   const el = document.createElement(tag);
@@ -312,29 +426,65 @@ function h(tag, attrs, ...kids) {
     else if (k === 'value') el.value = v;
     else el.setAttribute(k, v === true ? '' : v);
   }
-  for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  return put(el, ...kids);
+}
+function put(el, ...kids) {
+  for (const k of kids.flat()) if (k != null && k !== false && k !== '') el.append(k.nodeType ? k : document.createTextNode(String(k)));
   return el;
 }
-const put = (el, ...kids) => { for (const k of kids.flat()) if (k != null && k !== false && k !== '') el.append(k); return el; };
+function svg(tag, attrs, ...kids) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, v);
+  for (const k of kids) el.append(k);
+  return el;
+}
+// Кольцо прогресса: доля от 0 до 1, внутри произвольное содержимое.
+let ringSeq = 0;
+function ring(pct, size, stroke, ...inner) {
+  const r = (size - stroke) / 2, len = 2 * Math.PI * r, id = 'rg' + (++ringSeq);
+  const p = Math.max(0, Math.min(1, pct || 0));
+  const arc = svg('circle', { class: 'arc', cx: size / 2, cy: size / 2, r, 'stroke-width': stroke, stroke: 'url(#' + id + ')',
+    'stroke-dasharray': len, 'stroke-dashoffset': len });
+  const s = svg('svg', { width: size, height: size, viewBox: '0 0 ' + size + ' ' + size, 'aria-hidden': 'true' },
+    svg('defs', {}, svg('linearGradient', { id, x1: '0', y1: '0', x2: '1', y2: '1' },
+      svg('stop', { offset: '0', 'stop-color': 'var(--sky)' }), svg('stop', { offset: '1', 'stop-color': 'var(--accent)' }))),
+    svg('circle', { class: 'track', cx: size / 2, cy: size / 2, r, 'stroke-width': stroke }), arc);
+  requestAnimationFrame(() => requestAnimationFrame(() => arc.setAttribute('stroke-dashoffset', len * (1 - p))));
+  return h('div', { class: 'ring', style: 'width:' + size + 'px;height:' + size + 'px', role: 'img', 'aria-label': Math.round(p * 100) + '%' },
+    s, h('div', { class: 'in' }, ...inner));
+}
+const pctText = p => Math.round(p * 100) + '%';
+
 const root = document.getElementById('app');
-let view = 'home', session = null, toastTimer = 0;
+let view = 'home', session = null, toastTimer = 0, reading = null, dictFilter = 'all';
 function toast(msg) {
   document.querySelectorAll('.toast').forEach(t => t.remove());
   const t = h('div', { class: 'toast', role: 'status' }, msg);
   document.body.append(t); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.remove(), 3200);
 }
 function go(v) { view = v; render(); window.scrollTo(0, 0); }
-function header() {
-  const tab = (id, label) => h('button', { 'aria-current': view === id ? 'page' : null, onclick: () => { session = null; go(id); } }, label);
-  return h('header', { class: 'top' }, h('div', { class: 'brand' }, 'Чанки'),
-    h('nav', {}, tab('home', 'Сегодня'), tab('sheet', 'Шпаргалка'), tab('settings', 'Настройки')));
+const ICONS = {
+  home: 'M12 3.5a8.5 8.5 0 1 0 8.5 8.5M12 7.5a4.5 4.5 0 1 0 4.5 4.5',
+  texts: 'M6 4.5h9l3 3v12H6zM9 10h6M9 13.5h6M9 17h3.5',
+  dict: 'M5 6.5h14M5 12h14M5 17.5h9',
+  settings: 'M5 8h6M15 8h4M5 16h3M12 16h7M13 5.5v5M10 13.5v5'
+};
+function tabs() {
+  const tab = (id, label) => h('button', { 'aria-current': (view === id || (id === 'texts' && view === 'read')) ? 'page' : null,
+    onclick: () => { session = null; reading = null; go(id); } },
+    svg('svg', { viewBox: '0 0 24 24', 'aria-hidden': 'true' }, svg('path', { d: ICONS[id] })), label);
+  return h('nav', { class: 'tabs' }, h('div', { class: 'inner' },
+    tab('home', 'Сегодня'), tab('texts', 'Тексты'), tab('dict', 'Словарь'), tab('settings', 'Настройки')));
 }
 function render() {
+  document.querySelectorAll('.tabs,.sheet').forEach(x => x.remove());
   root.replaceChildren();
-  if (view === 'session' && session) { put(root, renderSession()); return; }
-  put(root, header());
-  if (!storageOk) put(root, h('div', { class: 'banner' }, 'Браузер не даёт сохранять данные в этом режиме. Прогресс пропадёт при закрытии страницы: сохраните его файлом в настройках.'));
-  put(root, view === 'sheet' ? renderSheet() : view === 'settings' ? renderSettings() : view === 'summary' ? renderSummary() : renderHome());
+  root.className = 'app';
+  if (view === 'session' && session) { root.className = 'app bare'; put(root, renderSession()); return; }
+  if (!storageOk) put(root, h('div', { class: 'banner' }, 'Браузер не даёт сохранять данные: место закончилось или режим приватный. Сохраните прогресс файлом в настройках.'));
+  const screens = { texts: renderTexts, read: renderRead, dict: renderDict, settings: renderSettings, summary: renderSummary };
+  put(root, (screens[view] || renderHome)());
+  document.body.append(tabs());
 }
 
 // ---------- главный экран ----------
@@ -348,20 +498,30 @@ function nextDueText() {
 function renderHome() {
   const n = counts(), todo = n.due + n.newLeft;
   const box = h('div', {});
-  put(box, h('h1', {}, todo ? 'На сегодня ' + todo + ' ' + plural(todo, 'чанк', 'чанка', 'чанков') : 'На сегодня всё'));
-  put(box, h('p', { class: 'muted' }, todo
-    ? n.due + ' к повторению, ' + n.newLeft + ' ' + plural(n.newLeft, 'новый', 'новых', 'новых') + '. Сначала повторение, потом знакомство с новыми.'
-    : (nextDueText() || 'Все чанки колоды уже в работе.')));
+  put(box, h('h1', {}, todo ? 'Сегодня' : 'На сегодня всё'),
+    h('p', { class: 'muted' }, todo
+      ? n.due + ' к повторению и ' + n.newLeft + ' ' + plural(n.newLeft, 'новое', 'новых', 'новых') + '.'
+      : (nextDueText() || 'Все слова и выражения уже в работе.')));
+  const total = n.done + todo;
+  put(box, h('div', { class: 'hero' },
+    ring(total ? n.done / total : 0, 232, 14,
+      h('div', { class: 'num' }, todo ? todo : '✓'),
+      h('div', { class: 'cap' }, todo ? plural(todo, 'осталось', 'осталось', 'осталось') : 'сделано ' + n.done))));
+  const extra = Math.min(n.fresh, state.settings.newPerDay);
   put(box, h('div', { class: 'actions' },
     todo ? h('button', { class: 'btn primary block', onclick: () => start(0) }, 'Начать занятие') : null,
     !todo && n.fresh ? h('button', { class: 'btn block', onclick: () => start(state.settings.newPerDay) },
-      'Взять ещё ' + Math.min(n.fresh, state.settings.newPerDay) + ' ' + plural(Math.min(n.fresh, state.settings.newPerDay), 'новый', 'новых', 'новых')) : null));
-  put(box, h('h2', {}, 'Колода'));
-  const stat = (v, l) => h('div', { class: 'stat' }, h('b', {}, v), h('span', {}, l));
-  put(box, h('div', { class: 'stats' }, stat(n.fresh, 'ещё не начаты'), stat(n.learning, 'в работе'),
-    stat(n.mature, 'закреплены'), stat(n.leech, 'трудные')));
-  put(box, h('p', { class: 'small muted' }, 'Всего ' + n.total + ' ' + plural(n.total, 'чанк', 'чанка', 'чанков') + ' в ' +
-    allDecks().length + ' ' + plural(allDecks().length, 'колоде', 'колодах', 'колодах') + '. Расписание считает алгоритм FSRS, как в Anki.'));
+      'Взять ещё ' + extra + ' ' + plural(extra, 'новое', 'новых', 'новых')) : null));
+  const cell = (r, val, lbl) => h('div', { class: 'cell' }, r, h('div', {}, h('div', { class: 'val' }, val), h('div', { class: 'lbl' }, lbl)));
+  const wp = n.word.n ? n.word.m / n.word.n : 0, cp = n.chunk.n ? n.chunk.m / n.chunk.n : 0;
+  const toNext = Math.max(1, Math.ceil(PER_LEVEL - (n.points % PER_LEVEL)));
+  put(box, h('div', { class: 'trio' },
+    cell(ring(wp, 76, 7), n.word.n ? pctText(wp) : '—', n.word.n ? 'слова, ' + n.word.n : 'слов пока нет'),
+    cell(ring(cp, 76, 7), pctText(cp), 'выражения, ' + n.chunk.n),
+    cell(ring(n.levelPct, 76, 7), String(n.level), 'уровень')));
+  put(box, h('p', { class: 'small muted center', style: 'margin-top:18px' },
+    'Кольцо слова или выражения замыкается, когда интервал повторения доходит до трёх недель. До следующего уровня: ' +
+    toNext + ' ' + plural(toNext, 'закреплённое', 'закреплённых', 'закреплённых') + '.'));
   return box;
 }
 function start(extra) {
@@ -393,16 +553,15 @@ function advance(requeue) {
   render(); window.scrollTo(0, 0);
 }
 function retryKind(item) {
-  const kinds = item.c.gaps.map((_, i) => 'gap' + i).filter(k => k !== item.kind);
-  return kinds.length ? kinds[0] : 'gap0';
+  const kinds = gapKinds(item.c).filter(k => k !== item.kind);
+  return kinds.length ? kinds[0] : (item.c.gaps.length ? 'gap0' : 'tr');
 }
 function renderSession() {
   const item = session.queue[session.pos], c = item.c;
   const wrap = h('div', {});
-  put(wrap, h('div', { class: 'row', style: 'justify-content:space-between;align-items:center;margin-bottom:10px' },
-    h('span', { class: 'small muted' }, (session.done + 1) + ' из ' + session.total),
-    h('button', { class: 'btn ghost', onclick: () => { session = null; go('home'); } }, 'Закончить')));
-  put(wrap, h('div', { class: 'progress' }, h('i', { style: 'width:' + Math.round(100 * session.done / session.total) + '%' })));
+  put(wrap, h('div', { class: 'sbar' },
+    h('div', { class: 'left' }, ring(session.done / session.total, 34, 4), (session.done + 1) + ' из ' + session.total),
+    h('button', { class: 'btn ghost quiet', onclick: () => { session = null; go('home'); } }, 'Закончить')));
   const card = h('div', { class: 'card' });
   put(wrap, card);
   const fn = { intro: exIntro, notice: exNotice, meaning: exMeaning, form: exForm, tr: exOpen, free: exOpen }[item.kind] || exGap;
@@ -412,16 +571,18 @@ function renderSession() {
 function nextBtn(label, onclick, primary = true) {
   return h('button', { class: 'btn block' + (primary ? ' primary' : ''), onclick }, label);
 }
+const what = c => kindOf(c) === 'word' ? 'слово' : 'выражение';
 
-// Знакомство: чанк с примерами, без нагрузки.
+// Знакомство: без нагрузки.
 function exIntro(card, item, c) {
-  put(card, h('div', { class: 'stage' }, 'Новый чанк'),
+  put(card, h('div', { class: 'stage' }, kindOf(c) === 'word' ? 'Новое слово' : 'Новое выражение'),
     h('div', { class: 'chunk', lang: 'en' }, c.en), h('div', { class: 'ru' }, c.ru),
-    h('ul', { class: 'examples', lang: 'en' }, c.ex.map(e => h('li', {}, e))),
+    c.ex.length ? h('ul', { class: 'examples', lang: 'en' }, c.ex.map(e => h('li', {}, e))) : null,
     errNote(c),
-    h('div', { class: 'actions' }, nextBtn('Понятно, дальше', () => advance()), speakBtn(c.en + '. ' + c.ex[0])));
+    c.src ? h('p', { class: 'small muted', style: 'margin-top:10px' }, 'Из текста «' + c.src + '».') : null,
+    h('div', { class: 'actions' }, nextBtn('Понятно, дальше', () => advance()), speakBtn(c.en + '. ' + (c.ex[0] || ''))));
 }
-// Этап 1: заметить чанк в предложении.
+// Этап 1: заметить в предложении.
 function exNotice(card, item, c) {
   const m = c.ctx.match(/^(.*?)\[(.+?)\](.*)$/);
   const parts = [[m[1], false], [m[2], true], [m[3], false]];
@@ -430,7 +591,7 @@ function exNotice(card, item, c) {
   const line = h('div', { class: 'tokens', lang: 'en' });
   let checked = false;
   toks.forEach(t => {
-    t.el = h('button', { class: 'tok word', type: 'button', onclick: () => { if (checked) return; t.sel = !t.sel; t.el.classList.toggle('sel', t.sel); btn.disabled = !toks.some(x => x.sel); } }, t.w);
+    t.el = h('button', { class: 'tok', type: 'button', onclick: () => { if (checked) return; t.sel = !t.sel; t.el.classList.toggle('sel', t.sel); btn.disabled = !toks.some(x => x.sel); } }, t.w);
     put(line, t.el, ' ');
   });
   const out = h('div', {});
@@ -439,15 +600,15 @@ function exNotice(card, item, c) {
     checked = true;
     const ok = toks.every(t => !!t.sel === t.target);
     toks.forEach(t => { t.el.classList.remove('sel'); if (t.target) t.el.classList.add('right'); else if (t.sel) t.el.classList.add('wrong'); });
-    put(out, h('div', { class: 'verdict ' + (ok ? 'ok' : 'no') }, ok ? 'Верно.' : 'Выражение выделено зелёным.'),
+    put(out, h('div', { class: 'verdict ' + (ok ? 'ok' : 'no') }, ok ? 'Верно.' : 'Правильные слова выделены.'),
       h('div', { class: 'muted' }, c.en + ' — ' + c.ru));
     btn.textContent = 'Дальше';
   });
   btn.disabled = true;
-  put(card, h('div', { class: 'stage' }, 'Заметить'), h('div', { class: 'task' }, 'Найдите в предложении выражение со значением «' + c.ru + '». Нажмите на его слова.'),
+  put(card, h('div', { class: 'stage' }, 'Заметить'), h('div', { class: 'task' }, 'Найдите в предложении ' + what(c) + ' со значением «' + c.ru + '». Нажмите на нужные слова.'),
     line, out, h('div', { class: 'actions' }, btn));
 }
-// Варианты одной формы: проверка выбором.
+// Проверка выбором из вариантов одной формы.
 function choice(card, stage, task, body, options, correct, after) {
   const out = h('div', {}), list = h('div', { class: 'opts' });
   let done = false;
@@ -457,16 +618,23 @@ function choice(card, stage, task, body, options, correct, after) {
       if (done) return; done = true;
       list.querySelectorAll('.opt').forEach(x => { if (x.dataset.v === correct) x.classList.add('right'); });
       if (o !== correct) b.classList.add('wrong');
-      put(out, h('div', { class: 'verdict ' + (o === correct ? 'ok' : 'no') }, o === correct ? 'Верно.' : 'Правильный вариант выделен.'), after || '');
+      put(out, h('div', { class: 'verdict ' + (o === correct ? 'ok' : 'no') }, o === correct ? 'Верно.' : 'Правильный вариант выделен.'), after);
       next.disabled = false; next.focus();
     } }, o);
-    b.dataset.v = o; list.append(b);
+    b.dataset.v = o; put(list, b);
   });
   put(card, h('div', { class: 'stage' }, stage), h('div', { class: 'task' }, task), body, list, out, h('div', { class: 'actions' }, next));
 }
+// Для своих карточек неверные варианты берутся из других карточек, ближайших по длине.
+function distractors(c) {
+  if (c.mean) return c.mean.slice(0, 2);
+  const pool = [...new Set(allChunks().filter(x => x.key !== c.key && x.ru !== c.ru).map(x => x.ru))]
+    .sort((a, b) => Math.abs(a.length - c.ru.length) - Math.abs(b.length - c.ru.length)).slice(0, 6);
+  return shuffle(pool).slice(0, 2);
+}
 // Этап 2: понять значение.
 function exMeaning(card, item, c) {
-  choice(card, 'Понять', 'Что значит это выражение?', h('div', { class: 'chunk', lang: 'en' }, c.en), [c.ru].concat(c.mean.slice(0, 2)), c.ru);
+  choice(card, 'Понять', 'Что это значит?', h('div', { class: 'chunk', lang: 'en' }, c.en), [c.ru].concat(distractors(c)), c.ru);
 }
 // Этап 3: разобрать форму.
 function exForm(card, item, c) {
@@ -485,16 +653,15 @@ function rateBar(item, suggest, info, legend) {
     put(bar, h('button', { class: 'g' + o.g + (o.g === suggest ? ' suggest' : ''), type: 'button', onclick: () => {
       session.ratings[o.g]++;
       applyRating(item, o.g, Object.assign({ suggest }, info));
-      if (o.g === 1) session.again++;
       advance(o.g === 1);
     } }, h('b', {}, GRADES[o.g]), h('span', {}, fmtIvl(o.ivl))));
   });
   return h('div', {}, bar, h('div', { class: 'legend' }, legend));
 }
-// Этап 4: контролируемое применение, проверяется автоматически.
+// Этап 4: вписать в пропуск, проверяется автоматически.
 function exGap(card, item, c) {
   const g = c.gaps[Number(item.kind.slice(3)) || 0] || c.gaps[0];
-  const input = h('input', { type: 'text', lang: 'en', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', 'aria-label': 'Ваш ответ' });
+  const input = h('input', { type: 'text', class: 'en', lang: 'en', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off', spellcheck: 'false', 'aria-label': 'Ваш ответ' });
   const out = h('div', {}), hintBox = h('div', { class: 'small muted', style: 'margin-top:8px' });
   let hinted = false, done = false;
   const check = nextBtn('Проверить', () => {
@@ -510,7 +677,7 @@ function exGap(card, item, c) {
       put(out, h('div', { class: 'actions' }, nextBtn(again ? 'Ещё раз позже' : 'Дальше', () => advance(again))));
     } else {
       put(out, rateBar(item, ok ? (hinted ? 2 : 3) : 1, { answer: input.value },
-        'Предложенная оценка обведена, её можно сменить. Под кнопкой срок следующего повторения. После Again чанк вернётся ещё раз в этом занятии.'));
+        'Предложенная оценка обведена, её можно сменить. Под кнопкой срок следующего повторения. После Again карточка вернётся ещё раз в этом занятии.'));
     }
   });
   const hintBtn = h('button', { class: 'btn ghost', type: 'button', onclick: () => {
@@ -518,7 +685,7 @@ function exGap(card, item, c) {
   } }, 'Подсказка');
   input.addEventListener('keydown', e => { if (e.key === 'Enter') check.click(); });
   put(card, h('div', { class: 'stage' }, item.retry ? 'Ещё раз' : 'Применить'),
-    h('div', { class: 'task' }, 'Впишите выражение: «' + g.ru + '».'),
+    h('div', { class: 'task' }, 'Впишите пропущенное: «' + g.ru + '».'),
     h('p', { class: 'en', lang: 'en' }, g.s.replace('___', '_____')), input, hintBox, out,
     h('div', { class: 'actions' }, check, hintBtn));
   setTimeout(() => input.focus(), 0);
@@ -526,22 +693,25 @@ function exGap(card, item, c) {
 // Этап 4–5: перевод и свободный ответ, сверка с образцом своими глазами.
 function exOpen(card, item, c) {
   const free = item.kind === 'free';
-  const area = h('textarea', { lang: 'en', autocapitalize: 'sentences', spellcheck: 'false', 'aria-label': 'Ваш ответ' });
+  const area = h('textarea', { class: 'en', lang: 'en', autocapitalize: 'sentences', spellcheck: 'false', 'aria-label': 'Ваш ответ' });
   const out = h('div', {});
   let done = false;
   const show = nextBtn('Показать образец', () => {
     if (done) return; done = true; area.disabled = true; show.remove();
     put(out, h('div', { class: 'model', lang: 'en' }, h('span', { class: 'lbl' }, free ? 'Возможный ответ' : 'Образец'),
         h('span', { class: 'en' }, free ? c.free.sample : c.tr.en)),
-      h('p', { class: 'small muted', style: 'margin-top:10px' }, 'Нужное выражение: ', h('b', { lang: 'en' }, c.en),
-        '. Сравните свой ответ с образцом: важно, чтобы выражение стояло в верной форме.'),
+      c.auto && !free && c.ex[0] && c.ex[0] !== c.en ? h('p', { class: 'small muted', style: 'margin-top:10px' }, 'В тексте: ', h('span', { lang: 'en' }, c.ex[0])) : null,
+      c.auto && !free ? null : h('p', { class: 'small muted', style: 'margin-top:10px' }, 'Нужное ' + what(c) + ': ', h('b', { lang: 'en' }, c.en),
+        '. Сравните свой ответ с образцом: важна верная форма.'),
       errNote(c),
+      item.retry ? h('div', { class: 'actions' }, nextBtn('Дальше', () => advance())) :
       rateBar(item, 0, { answer: area.value },
-        'Оцените сами. Again: не вспомнили выражение. Hard: вспомнили с ошибкой или с трудом. Good: верно. Easy: сразу и без усилий. Под кнопкой срок следующего повторения.'));
+        'Оцените сами. Again: не вспомнили. Hard: вспомнили с ошибкой или с трудом. Good: верно. Easy: сразу и без усилий. Под кнопкой срок следующего повторения.'));
   });
-  put(card, h('div', { class: 'stage' }, free ? 'Свободный ответ' : 'Перевод'),
-    h('div', { class: 'task' }, free ? 'Ответьте по-английски одним-двумя предложениями. Вам понадобится выражение со значением «' + c.ru + '».'
-      : 'Переведите на английский. Вам понадобится выражение со значением «' + c.ru + '».'),
+  const task = free ? 'Ответьте по-английски одним-двумя предложениями. Понадобится ' + what(c) + ' со значением «' + c.ru + '».'
+    : c.auto ? 'Как это сказать на изучаемом языке?' : 'Переведите на английский. Понадобится выражение со значением «' + c.ru + '».';
+  put(card, h('div', { class: 'stage' }, item.retry ? 'Ещё раз' : free ? 'Свободный ответ' : 'Перевод'),
+    h('div', { class: 'task' }, task),
     h('p', { class: 'ru' }, free ? c.free.q : c.tr.ru), area, out, h('div', { class: 'actions' }, show));
   setTimeout(() => area.focus(), 0);
 }
@@ -549,35 +719,200 @@ function exOpen(card, item, c) {
 // ---------- итог ----------
 function renderSummary() {
   const s = session || { ratings: [0, 0, 0, 0, 0], introduced: 0 };
-  const rated = s.ratings.reduce((a, b) => a + b, 0);
+  const rated = s.ratings.reduce((a, b) => a + b, 0), good = s.ratings[3] + s.ratings[4];
   const box = h('div', {}, h('h1', {}, 'Занятие окончено'),
-    h('p', { class: 'muted' }, 'Оценено ' + rated + ' ' + plural(rated, 'ответ', 'ответа', 'ответов') + ', новых чанков: ' + s.introduced + '. ' + nextDueText()));
-  const stat = (v, l) => h('div', { class: 'stat' }, h('b', {}, v), h('span', {}, l));
-  put(box, h('div', { class: 'stats' }, stat(s.ratings[1], 'Again'), stat(s.ratings[2], 'Hard'), stat(s.ratings[3], 'Good'), stat(s.ratings[4], 'Easy')));
+    h('p', { class: 'muted' }, 'Новых: ' + s.introduced + '. ' + nextDueText()));
+  put(box, h('div', { class: 'hero' }, ring(rated ? good / rated : 0, 200, 12,
+    h('div', { class: 'num', style: 'font-size:52px' }, rated ? pctText(good / rated) : '—'), h('div', { class: 'cap' }, 'Good и Easy'))));
+  const cell = (v, l) => h('div', { class: 'cell' }, h('div', { class: 'val' }, v), h('div', { class: 'lbl' }, l));
+  put(box, h('div', { class: 'trio', style: 'grid-template-columns:repeat(4,1fr)' },
+    cell(s.ratings[1], 'Again'), cell(s.ratings[2], 'Hard'), cell(s.ratings[3], 'Good'), cell(s.ratings[4], 'Easy')));
   put(box, h('div', { class: 'actions' }, nextBtn('На главную', () => { session = null; go('home'); })));
   return box;
 }
 
-// ---------- шпаргалка ----------
-function renderSheet() {
-  const today = dayNum(), box = h('div', {}, h('h1', {}, 'Шпаргалка'),
-    h('p', { class: 'muted' }, 'Все чанки по темам. Нажмите на чанк, чтобы увидеть примеры и типичную ошибку.'));
+// ---------- тексты ----------
+function autoTitle(body) {
+  const first = body.split('\n')[0].trim();
+  if (first.length <= 44) return first;
+  return first.slice(0, 44).replace(/\s+\S*$/, '') + '…';
+}
+function addText(title, body) {
+  body = String(body).replace(/\r\n?/g, '\n').replace(/[\[\]]/g, m => m === '[' ? '(' : ')').trim();
+  if (!body) { toast('Текст пустой.'); return; }
+  let cut = false;
+  if (body.length > 300000) { body = body.slice(0, 300000); cut = true; }
+  const t = { id: 't' + Date.now().toString(36), title: (title || autoTitle(body)).trim().slice(0, 80), body, added: Date.now(), page: 0 };
+  state.texts.unshift(t);
+  if (!save()) { state.texts.shift(); save(); storageOk = true; toast('Не хватило места: текст слишком большой.'); return; }
+  toast(cut ? 'Добавлено. Текст длинный, сохранено начало.' : 'Текст добавлен');
+  reading = { id: t.id }; go('read');
+}
+function renderTexts() {
+  const box = h('div', {}, h('h1', {}, 'Тексты'),
+    h('p', { class: 'muted' }, 'Добавьте свой текст на английском или русском. Нажмите на предложение, чтобы увидеть перевод, и выберите слова, которые хотите учить.'));
+  const area = h('textarea', { placeholder: 'Вставьте текст сюда', 'aria-label': 'Текст', style: 'min-height:120px' });
+  const file = h('input', { type: 'file', accept: '.txt,.md,.srt,text/plain', style: 'display:none' });
+  file.addEventListener('change', () => {
+    const f = file.files && file.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => addText(f.name.replace(/\.[^.]+$/, ''), r.result);
+    r.onerror = () => toast('Файл не читается.');
+    r.readAsText(f);
+  });
+  put(box, h('div', { class: 'actions' },
+    h('button', { class: 'btn primary block', onclick: () => file.click() }, 'Загрузить текстовый файл'), file,
+    area, h('button', { class: 'btn block', onclick: () => addText('', area.value) }, 'Добавить вставленный текст')));
+  if (state.texts.length) {
+    put(box, h('h2', {}, 'Мои тексты'));
+    const list = h('div', { class: 'list' });
+    for (const t of state.texts) {
+      const added = state.my.filter(m => m.srcId === t.id).length;
+      put(list, h('div', { class: 'item' }, h('div', { class: 'head', onclick: () => { reading = { id: t.id }; go('read'); } },
+        h('div', { class: 'txt' }, h('div', { class: 'e' }, t.title),
+          h('div', { class: 'r' }, Math.max(1, Math.round(t.body.split(/\s+/).length / 100) * 100) + ' слов' + (added ? ', в изучении: ' + added : ''))),
+        h('button', { class: 'btn ghost quiet', onclick: e => { e.stopPropagation();
+          if (confirm('Удалить текст «' + t.title + '»? Добавленные из него слова останутся.')) { state.texts = state.texts.filter(x => x.id !== t.id); save(); render(); } } }, 'Удалить'))));
+    }
+    put(box, list);
+  }
+  return box;
+}
+const PAGE = 25; // абзацев на странице
+function sentences(par) {
+  return par.match(/[^.!?…]+[.!?…]+["'”’»)]*\s*|[^.!?…]+$/g) || [par];
+}
+function renderRead() {
+  const t = state.texts.find(x => x.id === (reading && reading.id));
+  if (!t) { view = 'texts'; return renderTexts(); }
+  const pars = t.body.split(/\n\s*\n|\n/).map(p => p.replace(/\s+/g, ' ').trim()).filter(Boolean);
+  const pages = Math.max(1, Math.ceil(pars.length / PAGE));
+  t.page = Math.min(t.page || 0, pages - 1);
+  const box = h('div', {});
+  put(box, h('div', { class: 'sbar' },
+    h('button', { class: 'btn ghost', style: 'padding-left:0', onclick: () => { reading = null; go('texts'); } }, 'Все тексты'),
+    h('div', { class: 'left' }, ring((t.page + 1) / pages, 34, 4), 'стр. ' + (t.page + 1) + ' из ' + pages)));
+  put(box, h('p', { class: 'small muted', style: 'margin-bottom:14px' }, t.title));
+  const body = h('div', { class: 'reader' });
+  let current = null;
+  for (const par of pars.slice(t.page * PAGE, (t.page + 1) * PAGE)) {
+    const p = h('p', {});
+    for (const s of sentences(par)) {
+      const span = h('span', { class: 's', tabindex: '0', role: 'button' }, s);
+      const open = () => { if (current) current.classList.remove('on'); current = span; span.classList.add('on'); openSheet(t, s.trim(), () => { span.classList.remove('on'); current = null; }); };
+      span.addEventListener('click', open);
+      span.addEventListener('keydown', e => { if (e.key === 'Enter') open(); });
+      put(p, span);
+    }
+    put(body, p);
+  }
+  put(box, body);
+  const turn = d => { t.page += d; save(); render(); window.scrollTo(0, 0); };
+  if (pages > 1) put(box, h('div', { class: 'row', style: 'justify-content:space-between;margin-top:8px' },
+    h('button', { class: 'btn', disabled: t.page === 0, onclick: () => turn(-1) }, 'Назад'),
+    h('button', { class: 'btn', disabled: t.page >= pages - 1, onclick: () => turn(1) }, 'Дальше')));
+  return box;
+}
+// Панель предложения: перевод, выбор слов, добавление в изучение.
+function openSheet(text, sentence, onClose) {
+  document.querySelectorAll('.sheet').forEach(x => x.remove());
+  const ru = isRu(sentence), from = ru ? 'ru' : 'en', to = ru ? 'en' : 'ru';
+  const words = sentence.split(/\s+/).filter(Boolean);
+  let a = -1, b = -1;
+  const sheet = h('div', { class: 'sheet', role: 'dialog', 'aria-label': 'Перевод предложения' });
+  const inner = h('div', { class: 'inner' });
+  const close = () => { sheet.remove(); onClose(); };
+  const line = h('div', { class: 'tokens', lang: from });
+  const trLine = h('div', { class: 'tr muted' }, canTranslate() ? 'Перевожу…' : '');
+  const form = h('div', {});
+  let sentenceTr = '';
+  const els = words.map((w, i) => h('button', { class: 'tok', type: 'button', onclick: () => pick(i) }, w));
+  els.forEach(el => put(line, el, ' '));
+  function pick(i) {
+    if (a < 0 || (i >= a && i <= b && a !== b)) { a = b = i; }
+    else if (i === a && a === b) { a = b = -1; }
+    else { a = Math.min(a, i); b = Math.max(b, i); }
+    els.forEach((el, j) => el.classList.toggle('sel', j >= a && j <= b));
+    drawForm();
+  }
+  function drawForm() {
+    form.replaceChildren();
+    const whole = a < 0;
+    const sel = whole ? sentence : core(words.slice(a, b + 1).join(' '));
+    if (!sel) return;
+    // Учим всегда английскую сторону; русская идёт как значение.
+    const learn = h('input', { type: 'text', class: 'en', 'aria-label': 'Что учить', value: ru ? '' : sel });
+    const mean = h('input', { type: 'text', 'aria-label': 'Перевод', value: ru ? sel : (whole ? sentenceTr : '') , placeholder: 'Перевод' });
+    const target = ru ? learn : mean;
+    if (!target.value && canTranslate()) {
+      target.placeholder = 'Перевожу…';
+      translate(sel, from, to).then(r => { if (r && !target.value) target.value = r; target.placeholder = ru ? 'По-английски' : 'Перевод'; });
+    } else if (ru) learn.placeholder = 'По-английски';
+    const add = h('button', { class: 'btn primary block', onclick: () => {
+      const en = learn.value.trim(), rus = mean.value.trim();
+      if (!en || !rus) { toast('Заполните оба поля.'); return; }
+      if (state.my.some(m => norm(m.en) === norm(en))) { toast('Это уже есть в изучении.'); return; }
+      const ctx = ru ? '[' + en + ']'
+        : whole ? '[' + sentence + ']'
+        : words.slice(0, a).concat(['[' + words.slice(a, b + 1).join(' ') + ']'], words.slice(b + 1)).join(' ');
+      state.my.push({ id: 'm' + Date.now().toString(36), en, ru: rus, type: /\s/.test(en) ? 'chunk' : 'word', ctx, src: text.title, srcId: text.id });
+      save(); toast(/\s/.test(en) ? 'Выражение добавлено' : 'Слово добавлено');
+      a = b = -1; els.forEach(el => el.classList.remove('sel')); drawForm();
+    } }, whole ? 'Учить всё предложение' : 'Добавить в изучение');
+    put(form, h('p', { class: 'small muted' }, whole ? 'Нажмите на слова, чтобы выбрать слово или выражение. Или добавьте предложение целиком.'
+      : 'Выбрано. Первое и последнее нажатие задают границы выражения.'),
+      h('div', { class: 'field' }, h('span', { class: 'lbl' }, 'Учить'), learn),
+      h('div', { class: 'field' }, h('span', { class: 'lbl' }, 'Значение'), mean), add);
+  }
+  put(inner, h('button', { class: 'x', 'aria-label': 'Закрыть', onclick: close }, '×'), line, trLine, form);
+  put(sheet, inner); document.body.append(sheet);
+  drawForm();
+  if (canTranslate()) {
+    translate(sentence, from, to).then(r => {
+      if (!sheet.isConnected) return;
+      if (r) { sentenceTr = r; trLine.classList.remove('muted'); trLine.textContent = r; trLine.lang = to; if (a < 0) drawForm(); }
+      else trLine.textContent = 'Перевести не удалось. При первом переводе нужен интернет: скачивается языковая модель.';
+    });
+  } else {
+    put(trLine, 'Автоперевод работает в приложении для Android. Здесь впишите перевод сами или ',
+      h('a', { href: 'https://translate.google.com/?sl=' + from + '&tl=' + to + '&text=' + encodeURIComponent(sentence), target: '_blank', rel: 'noopener' }, 'откройте переводчик'), '.');
+  }
+}
+
+// ---------- словарь ----------
+function renderDict() {
+  const today = dayNum(), box = h('div', {}, h('h1', {}, 'Словарь'),
+    h('p', { class: 'muted' }, 'Кольцо показывает, насколько закреплена карточка. Нажмите, чтобы увидеть примеры.'));
+  const chip = (id, label) => h('button', { 'aria-pressed': String(dictFilter === id), onclick: () => { dictFilter = id; render(); } }, label);
+  put(box, h('div', { class: 'chips' }, chip('all', 'Все'), chip('word', 'Слова'), chip('chunk', 'Выражения'), chip('my', 'Из моих текстов')));
   const topics = new Map();
-  for (const c of allChunks()) { const t = c.topic || 'Без темы'; if (!topics.has(t)) topics.set(t, []); topics.get(t).push(c); }
+  for (const c of allChunks()) {
+    if (dictFilter === 'my' ? !c.auto : (dictFilter !== 'all' && kindOf(c) !== dictFilter)) continue;
+    const t = c.topic || 'Без темы'; if (!topics.has(t)) topics.set(t, []); topics.get(t).push(c);
+  }
+  if (!topics.size) put(box, h('p', { class: 'muted' }, dictFilter === 'word' || dictFilter === 'my'
+    ? 'Пока пусто. Откройте вкладку «Тексты», нажмите на предложение и выберите слово.' : 'Пока пусто.'));
   for (const [t, list] of topics) {
-    const sec = h('div', { class: 'topic' }, h('h2', {}, t));
+    put(box, h('h2', {}, t));
+    const sec = h('div', { class: 'list' });
     for (const c of list) {
-      const k = state.cards[c.key];
-      const chip = !k ? h('span', { class: 'chip' }, 'новый')
-        : k.lapses >= LEECH ? h('span', { class: 'chip leech' }, 'трудный')
-        : k.due <= today ? h('span', { class: 'chip due' }, 'сегодня')
-        : h('span', { class: 'chip' }, 'через ' + fmtIvl(k.due - today));
+      const k = state.cards[c.key], m = mastery(k);
+      const when = !k ? h('span', { class: 'when' }, 'новое')
+        : k.lapses >= LEECH ? h('span', { class: 'when leech' }, 'трудное')
+        : k.due <= today ? h('span', { class: 'when due' }, 'сегодня')
+        : h('span', { class: 'when' }, 'через ' + fmtIvl(k.due - today));
       put(sec, h('details', { class: 'item' },
-        h('summary', {}, h('span', {}, h('span', { class: 'e', lang: 'en' }, c.en), h('br'), h('span', { class: 'r' }, c.ru)), chip),
-        h('ul', { class: 'examples', lang: 'en', style: 'margin-top:10px' }, c.ex.map(e => h('li', {}, e))),
+        h('summary', {}, h('span', { class: 'mini' }, ring(m, 34, 4, h('span', { class: 'val' }, k ? Math.round(m * 100) : ''))),
+          h('span', { class: 'txt' }, h('span', { class: 'e', lang: 'en' }, c.en), h('br'), h('span', { class: 'r' }, c.ru)), when),
+        c.ex.length ? h('ul', { class: 'examples', lang: 'en', style: 'margin-top:12px' }, c.ex.map(e => h('li', {}, e))) : null,
         errNote(c),
-        h('p', { class: 'small muted', style: 'margin-top:10px' }, 'Источник: ' + (c.deck.source || c.deck.title || c.deck.id) + (c.lesson ? ', урок ' + c.lesson : '') +
-          (k ? '. Повторений: ' + k.reps + ', срывов: ' + k.lapses + '.' : '.'))));
+        h('p', { class: 'small muted', style: 'margin-top:10px' },
+          'Источник: ' + (c.auto ? (c.src ? 'текст «' + c.src + '»' : 'мой текст') : (c.deck.source || c.deck.title || c.deck.id) + (c.lesson ? ', урок ' + c.lesson : '')) +
+          (k ? '. Повторений: ' + k.reps + ', срывов: ' + k.lapses + '.' : '.')),
+        c.auto ? h('button', { class: 'btn ghost quiet', style: 'padding-left:0', onclick: () => {
+          if (!confirm('Убрать «' + c.en + '» из изучения?')) return;
+          state.my = state.my.filter(x => x.id !== c.id); delete state.cards[c.key]; save(); render();
+        } }, 'Убрать из изучения') : null));
     }
     put(box, sec);
   }
@@ -612,44 +947,53 @@ function renderSettings() {
   const sel = h('select', {}, [0.85, 0.9, 0.95].map(v => h('option', { value: v, selected: Math.abs(s.retention - v) < 0.001 }, Math.round(v * 100) + '%')));
   sel.addEventListener('change', () => { s.retention = Number(sel.value); save(); toast('Сохранено'); });
   put(box, h('h2', {}, 'Нагрузка'),
-    num('Новых чанков в день', 'newPerDay', 0, 50, 'По умолчанию 5. Каждый новый чанк добавляет повторения в следующие дни.'),
+    num('Новых в день', 'newPerDay', 0, 50, 'По умолчанию 5. Каждая новая карточка добавляет повторения в следующие дни.'),
     num('Повторений за занятие, не больше', 'maxReviews', 5, 500, 'Если накопилось больше, остальное перейдёт на следующее занятие.'),
     h('div', { class: 'field' }, h('label', {}, 'Желаемое удержание'), sel,
-      h('div', { class: 'hint' }, 'С какой вероятностью вы должны помнить чанк к моменту повторения. 85%: меньше повторений. 95%: надёжнее, но повторений заметно больше.')));
-  put(box, h('h2', {}, 'Прогресс'), h('p', { class: 'small muted' }, 'Прогресс хранится в этом браузере. Сохраняйте его файлом, чтобы перенести на другое устройство или не потерять при очистке браузера.'),
+      h('div', { class: 'hint' }, 'С какой вероятностью вы должны помнить карточку к моменту повторения. 85%: меньше повторений. 95%: надёжнее, но повторений заметно больше.')));
+  put(box, h('h2', {}, 'Прогресс'), h('p', { class: 'small muted' }, 'Прогресс, тексты и свои слова хранятся на этом устройстве. Сохраняйте их файлом, чтобы перенести на другое устройство или не потерять.'),
     h('div', { class: 'row' },
       h('button', { class: 'btn', onclick: () => download('chunks-progress-' + dayKey() + '.json', { format: 'chunk-progress/1', exported: new Date().toISOString(), state }) }, 'Сохранить в файл'),
       h('button', { class: 'btn', onclick: () => pickFile(d => {
         if (!d || d.format !== 'chunk-progress/1' || !d.state || typeof d.state.cards !== 'object') { toast('Это не файл прогресса.'); return; }
         if (!confirm('Заменить текущий прогресс данными из файла?')) return;
-        state = Object.assign(fresh(), d.state); state.settings = Object.assign(fresh().settings, d.state.settings || {});
-        for (const [id, deck] of Object.entries(state.decks || {})) if (validDeck(deck)) delete state.decks[id];
+        state = adopt(d.state);
+        for (const [id, deck] of Object.entries(state.decks)) if (validDeck(deck)) delete state.decks[id];
+        state.my = state.my.filter(m => m && typeof m.en === 'string' && typeof m.ru === 'string' && typeof m.id === 'string');
+        state.texts = state.texts.filter(t => t && typeof t.body === 'string' && typeof t.title === 'string' && typeof t.id === 'string');
         save(); render(); toast('Прогресс загружен');
       }) }, 'Загрузить из файла')));
   put(box, h('h2', {}, 'Колоды'));
+  const list = h('div', { class: 'list' });
   for (const d of allDecks()) {
-    const mine = d !== BUILTIN;
-    put(box, h('div', { class: 'row', style: 'justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:10px 0' },
-      h('div', {}, h('div', {}, d.title || d.id), h('div', { class: 'small muted' }, d.chunks.length + ' ' + plural(d.chunks.length, 'чанк', 'чанка', 'чанков') + (mine ? '' : ', встроенная'))),
-      mine ? h('button', { class: 'btn ghost', onclick: () => { if (confirm('Удалить колоду «' + (d.title || d.id) + '» и её прогресс?')) {
-        delete state.decks[d.id]; for (const k of Object.keys(state.cards)) if (k.startsWith(d.id + '/')) delete state.cards[k]; save(); render(); } } }, 'Удалить') : null));
+    const removable = d !== BUILTIN && !d.mine;
+    put(list, h('div', { class: 'item' }, h('div', { class: 'head', style: 'cursor:default' },
+      h('div', { class: 'txt' }, h('div', {}, d.title || d.id), h('div', { class: 'r' }, d.chunks.length + ' ' + plural(d.chunks.length, 'карточка', 'карточки', 'карточек') + (d === BUILTIN ? ', встроенная' : ''))),
+      removable ? h('button', { class: 'btn ghost quiet', onclick: () => { if (confirm('Удалить колоду «' + (d.title || d.id) + '» и её прогресс?')) {
+        delete state.decks[d.id]; for (const k of Object.keys(state.cards)) if (k.startsWith(d.id + '/')) delete state.cards[k]; save(); render(); } } }, 'Удалить') : null)));
   }
-  put(box, h('div', { class: 'row', style: 'margin-top:10px' },
+  put(box, list, h('div', { class: 'row', style: 'margin-top:14px' },
     h('button', { class: 'btn', onclick: () => pickFile(d => {
       const err = validDeck(d); if (err) { toast(err); return; }
       if (d.id === BUILTIN.id) { toast('Колода с таким идентификатором уже встроена.'); return; }
-      state.decks[d.id] = d; save(); render(); toast('Колода добавлена: ' + d.chunks.length + ' ' + plural(d.chunks.length, 'чанк', 'чанка', 'чанков'));
+      state.decks[d.id] = d; save(); render(); toast('Колода добавлена: ' + d.chunks.length);
     }) }, 'Добавить колоду из файла'),
     h('button', { class: 'btn', onclick: () => download('deck-' + BUILTIN.id + '.json', BUILTIN) }, 'Скачать образец колоды')));
   put(box, h('h2', {}, 'Сброс'), h('button', { class: 'btn', onclick: () => {
-    if (!confirm('Стереть весь прогресс? Колоды останутся.')) return;
+    if (!confirm('Стереть весь прогресс? Колоды, тексты и свои слова останутся.')) return;
     state.cards = {}; state.log = []; state.day = { date: '', introduced: 0, reviewed: 0 }; save(); render(); toast('Прогресс стёрт');
   } }, 'Начать заново'));
   return box;
 }
 
-// Кнопка «Назад» в приложении для Android: с любого экрана на главный, с главного наружу.
-window.appBack = () => { if (view === 'home') return false; session = null; go('home'); return true; };
+// Кнопка «Назад» в приложении для Android.
+window.appBack = () => {
+  const sheet = document.querySelector('.sheet .x');
+  if (sheet) { sheet.click(); return true; }
+  if (view === 'home') return false;
+  if (view === 'read') { reading = null; go('texts'); return true; }
+  session = null; go('home'); return true;
+};
 rollDay(); save(); render();
 })();
 </script>

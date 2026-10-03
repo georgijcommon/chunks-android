@@ -15,9 +15,19 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.mlkit.common.model.DownloadConditions;
+import com.google.mlkit.nl.translate.TranslateLanguage;
+import com.google.mlkit.nl.translate.Translation;
+import com.google.mlkit.nl.translate.Translator;
+import com.google.mlkit.nl.translate.TranslatorOptions;
+
+import org.json.JSONObject;
+
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Оболочка вокруг тренажёра: страница лежит в assets/index.html и работает без сети.
@@ -33,6 +43,7 @@ public class MainActivity extends Activity {
     private String pendingSave;
     private TextToSpeech tts;
     private boolean ttsReady;
+    private final Map<String, Translator> translators = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +116,32 @@ public class MainActivity extends Activity {
             });
         }
 
+        /** Перевод на устройстве; ответ возвращается в window.onTranslated(id, ok, text). */
+        @JavascriptInterface
+        public void translate(int id, String text, String from, String to) {
+            runOnUiThread(() -> {
+                String src = TranslateLanguage.fromLanguageTag(from);
+                String dst = TranslateLanguage.fromLanguageTag(to);
+                if (src == null || dst == null) {
+                    reply(id, false, "");
+                    return;
+                }
+                String key = src + ">" + dst;
+                Translator t = translators.get(key);
+                if (t == null) {
+                    t = Translation.getClient(new TranslatorOptions.Builder()
+                            .setSourceLanguage(src).setTargetLanguage(dst).build());
+                    translators.put(key, t);
+                }
+                final Translator tr = t;
+                tr.downloadModelIfNeeded(new DownloadConditions.Builder().build())
+                        .addOnSuccessListener(unused -> tr.translate(text)
+                                .addOnSuccessListener(result -> reply(id, true, result))
+                                .addOnFailureListener(e -> reply(id, false, "")))
+                        .addOnFailureListener(e -> reply(id, false, ""));
+            });
+        }
+
         @JavascriptInterface
         public void speak(String text) {
             runOnUiThread(() -> {
@@ -115,6 +152,15 @@ public class MainActivity extends Activity {
                 }
             });
         }
+    }
+
+    private void reply(int id, boolean ok, String text) {
+        runOnUiThread(() -> {
+            if (web != null) {
+                web.evaluateJavascript("window.onTranslated && window.onTranslated(" + id + "," + ok + ","
+                        + JSONObject.quote(text) + ")", null);
+            }
+        });
     }
 
     @Override
@@ -157,6 +203,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         if (tts != null) tts.shutdown();
+        for (Translator t : translators.values()) t.close();
         super.onDestroy();
     }
 
