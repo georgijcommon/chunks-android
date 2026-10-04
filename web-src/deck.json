@@ -1,0 +1,1475 @@
+{
+ "format": "chunk-deck/1",
+ "id": "everyday-1",
+ "title": "Повседневное общение",
+ "level": "B1–B2",
+ "source": "1000 English Collocations in 10 Minutes a Day (Espresso English)",
+ "chunks": [
+  {
+   "id": "take-your-time",
+   "en": "take your time",
+   "ru": "не торопиться",
+   "topic": "Время",
+   "lesson": 26,
+   "ex": [
+    "Take your time — there's no hurry.",
+    "She took her time choosing a present."
+   ],
+   "ctx": "There's no deadline, so [take your time] and do it properly.",
+   "mean": [
+    "тратить время зря",
+    "успевать вовремя"
+   ],
+   "form": {
+    "s": "___ your time — we don't need an answer today.",
+    "a": "Take",
+    "d": [
+     "Make",
+     "Spend"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "No need to hurry. ___ and think it over.",
+     "ru": "Не торопись",
+     "a": [
+      "take your time"
+     ]
+    },
+    {
+     "s": "I'm not in a hurry, so please ___.",
+     "ru": "не торопитесь",
+     "a": [
+      "take your time"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Не торопись, у нас весь день впереди.",
+    "en": "Take your time, we've got the whole day."
+   },
+   "free": {
+    "q": "Друг извиняется, что долго выбирает блюдо в кафе. Успокойте его.",
+    "sample": "Don't worry, take your time — I'm still reading the menu myself."
+   }
+  },
+  {
+   "id": "in-a-rush",
+   "en": "in a rush",
+   "ru": "в спешке",
+   "topic": "Время",
+   "lesson": 26,
+   "err": "in rush — без артикля неверно",
+   "ex": [
+    "Sorry, I can't talk — I'm in a rush.",
+    "He's always in a rush in the mornings."
+   ],
+   "ctx": "I forgot my keys because I left the house [in a rush].",
+   "mean": [
+    "с опозданием",
+    "без подготовки"
+   ],
+   "form": {
+    "s": "She's always in a ___ and never has time to chat.",
+    "a": "rush",
+    "d": [
+     "speed",
+     "quick"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I can't stop now, I'm ___.",
+     "ru": "спешу",
+     "a": [
+      "in a rush"
+     ]
+    },
+    {
+     "s": "We ate breakfast ___ and ran for the bus.",
+     "ru": "в спешке",
+     "a": [
+      "in a rush"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Извини, я спешу — поговорим позже.",
+    "en": "Sorry, I'm in a rush — let's talk later."
+   },
+   "free": {
+    "q": "Коллега зовёт выпить кофе, а вы опаздываете. Откажитесь вежливо.",
+    "sample": "I'd love to, but I'm in a rush right now — how about tomorrow?"
+   }
+  },
+  {
+   "id": "waste-time",
+   "en": "waste time",
+   "ru": "тратить время впустую",
+   "topic": "Время",
+   "lesson": 26,
+   "err": "lose time — это «терять время» из-за задержки, а не тратить его впустую",
+   "ex": [
+    "Stop wasting time and start packing.",
+    "I wasted a lot of time looking for my glasses."
+   ],
+   "ctx": "Let's not [waste time] arguing about it.",
+   "mean": [
+    "экономить время на мелочах",
+    "проводить время с пользой"
+   ],
+   "form": {
+    "s": "Don't ___ time on things you can't change.",
+    "a": "waste",
+    "d": [
+     "spoil",
+     "throw"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "Don't ___ on small details — the deadline is tomorrow.",
+     "ru": "не трать время",
+     "a": [
+      "waste time"
+     ]
+    },
+    {
+     "s": "I don't want to ___ standing in line.",
+     "ru": "тратить время впустую",
+     "a": [
+      "waste time"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Давай не будем тратить время впустую.",
+    "en": "Let's not waste time."
+   },
+   "free": {
+    "q": "Что для вас пустая трата времени? Ответьте одним-двумя предложениями.",
+    "sample": "I think I waste time when I scroll through social media before bed."
+   }
+  },
+  {
+   "id": "last-minute",
+   "en": "leave things to the last minute",
+   "ru": "откладывать на последний момент",
+   "topic": "Время",
+   "lesson": 26,
+   "ex": [
+    "Don't leave it to the last minute — book the tickets now.",
+    "He left his packing to the last minute, as usual."
+   ],
+   "ctx": "I [left everything to the last minute] and had to stay up all night.",
+   "mean": [
+    "успевать в самый последний момент",
+    "делать всё заранее и с запасом"
+   ],
+   "form": {
+    "s": "I always ___ things to the last minute.",
+    "a": "leave",
+    "d": [
+     "put",
+     "keep"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "Don't ___ — start the report today.",
+     "ru": "не откладывай на последний момент",
+     "a": [
+      "leave it to the last minute",
+      "leave things to the last minute",
+      "leave everything to the last minute"
+     ]
+    },
+    {
+     "s": "She never plans ahead; she always ___.",
+     "ru": "откладывает всё на последний момент",
+     "a": [
+      "leaves things to the last minute",
+      "leaves it to the last minute",
+      "leaves everything to the last minute"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Я всегда откладываю всё на последний момент.",
+    "en": "I always leave everything to the last minute."
+   },
+   "free": {
+    "q": "Вы делаете дела заранее или откладываете? Расскажите.",
+    "sample": "To be honest, I usually leave things to the last minute, especially boring paperwork."
+   }
+  },
+  {
+   "id": "run-out-of-time",
+   "en": "run out of time",
+   "ru": "не хватить времени",
+   "topic": "Время",
+   "lesson": 26,
+   "ex": [
+    "I ran out of time and couldn't finish the last question.",
+    "Hurry up, we're running out of time."
+   ],
+   "ctx": "We [ran out of time] before we could discuss the budget.",
+   "mean": [
+    "прийти раньше времени",
+    "потерять счёт времени"
+   ],
+   "form": {
+    "s": "We're ___ out of time — let's decide now.",
+    "a": "running",
+    "d": [
+     "going",
+     "falling"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I didn't finish the test because I ___.",
+     "ru": "мне не хватило времени",
+     "a": [
+      "ran out of time"
+     ]
+    },
+    {
+     "s": "We need to hurry — we're ___.",
+     "ru": "время заканчивается",
+     "a": [
+      "running out of time"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "У нас заканчивается время.",
+    "en": "We're running out of time."
+   },
+   "free": {
+    "q": "Вспомните случай, когда вам не хватило времени на что-то важное.",
+    "sample": "Last week I ran out of time and couldn't finish my presentation before the meeting."
+   }
+  },
+  {
+   "id": "fall-behind",
+   "en": "fall behind",
+   "ru": "отставать от графика",
+   "topic": "Время",
+   "lesson": 26,
+   "ex": [
+    "I was ill for a week and fell behind on my work.",
+    "If you miss classes, you'll fall behind."
+   ],
+   "ctx": "We've [fallen behind] on the project, so we need to work this weekend.",
+   "mean": [
+    "идти точно по графику",
+    "бросить на полпути"
+   ],
+   "form": {
+    "s": "I've ___ behind on my emails this week.",
+    "a": "fallen",
+    "d": [
+     "dropped",
+     "gone"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I missed two lessons and now I've ___.",
+     "ru": "отстал",
+     "a": [
+      "fallen behind"
+     ]
+    },
+    {
+     "s": "Don't skip the homework or you'll ___.",
+     "ru": "отстанешь",
+     "a": [
+      "fall behind"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Я отстал по работе, пока болел.",
+    "en": "I fell behind on my work while I was ill."
+   },
+   "free": {
+    "q": "По каким делам вы сейчас отстаёте?",
+    "sample": "I've fallen behind on my reading — I have three books waiting."
+   }
+  },
+  {
+   "id": "in-advance",
+   "en": "in advance",
+   "ru": "заранее",
+   "topic": "Время",
+   "lesson": 26,
+   "err": "in advanced — частая описка, верно только advance",
+   "ex": [
+    "Thanks in advance for your help.",
+    "We booked the tickets a month in advance."
+   ],
+   "ctx": "It's a popular restaurant, so you should book [in advance].",
+   "mean": [
+    "в спешке",
+    "вовремя"
+   ],
+   "form": {
+    "s": "You need to book two weeks in ___.",
+    "a": "advance",
+    "d": [
+     "ahead",
+     "forward"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "Let me know ___ if you can't come.",
+     "ru": "заранее",
+     "a": [
+      "in advance"
+     ]
+    },
+    {
+     "s": "It's cheaper if you pay ___.",
+     "ru": "заранее",
+     "a": [
+      "in advance"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Спасибо заранее!",
+    "en": "Thanks in advance!"
+   },
+   "free": {
+    "q": "Что вы обычно планируете заранее, а что нет?",
+    "sample": "I always book flights well in advance, but I never plan my weekends."
+   }
+  },
+  {
+   "id": "take-ages",
+   "en": "take ages",
+   "ru": "занимать уйму времени",
+   "topic": "Время",
+   "lesson": 26,
+   "ex": [
+    "It took me ages to get here — the traffic was awful.",
+    "This page takes ages to load."
+   ],
+   "ctx": "Sorry I'm late — the bus [took ages].",
+   "mean": [
+    "занимать пару минут",
+    "случаться очень редко"
+   ],
+   "form": {
+    "s": "It ___ me ages to find a parking space.",
+    "a": "took",
+    "d": [
+     "spent",
+     "made"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "The line was huge. It ___ to get in.",
+     "ru": "ушла уйма времени",
+     "a": [
+      "took ages"
+     ]
+    },
+    {
+     "s": "Don't order the soup — it always ___.",
+     "ru": "занимает уйму времени",
+     "a": [
+      "takes ages"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "У меня ушла уйма времени, чтобы найти твой дом.",
+    "en": "It took me ages to find your house."
+   },
+   "free": {
+    "q": "Что у вас занимает уйму времени, хотя должно быть быстрым?",
+    "sample": "It takes me ages to choose a film — sometimes longer than watching it."
+   }
+  },
+  {
+   "id": "make-small-talk",
+   "en": "make small talk",
+   "ru": "вести светскую беседу",
+   "topic": "Разговор",
+   "lesson": 37,
+   "err": "do small talk — неверный глагол",
+   "ex": [
+    "We made small talk while waiting for the meeting to start.",
+    "He hates making small talk at parties."
+   ],
+   "ctx": "At the party I had to [make small talk] with people I didn't know.",
+   "mean": [
+    "говорить строго по делу",
+    "перебивать собеседника"
+   ],
+   "form": {
+    "s": "I'm not good at ___ small talk with strangers.",
+    "a": "making",
+    "d": [
+     "doing",
+     "telling"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I never know what to say when I have to ___ with my neighbors.",
+     "ru": "вести светскую беседу",
+     "a": [
+      "make small talk"
+     ]
+    },
+    {
+     "s": "We ___ about the weather until the elevator arrived.",
+     "ru": "болтали о пустяках",
+     "a": [
+      "made small talk"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Я не люблю вести светские беседы.",
+    "en": "I don't like making small talk."
+   },
+   "free": {
+    "q": "О чём вы говорите, когда нужно поддержать светскую беседу?",
+    "sample": "When I make small talk, I usually ask about people's weekend plans."
+   }
+  },
+  {
+   "id": "strike-up",
+   "en": "strike up a conversation",
+   "ru": "завязать разговор",
+   "topic": "Разговор",
+   "lesson": 37,
+   "ex": [
+    "He struck up a conversation with a woman on the train.",
+    "It's easy to strike up a conversation with her."
+   ],
+   "ctx": "I [struck up a conversation] with a guy at the gym, and now we're friends.",
+   "mean": [
+    "закончить разговор",
+    "подслушать разговор"
+   ],
+   "form": {
+    "s": "She ___ up a conversation with the man next to her.",
+    "a": "struck",
+    "d": [
+     "hit",
+     "beat"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I'm shy, so it's hard for me to ___ with strangers.",
+     "ru": "завязать разговор",
+     "a": [
+      "strike up a conversation"
+     ]
+    },
+    {
+     "s": "On the plane I ___ with the woman next to me.",
+     "ru": "завязал разговор",
+     "a": [
+      "struck up a conversation"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Он завязал разговор с соседом.",
+    "en": "He struck up a conversation with his neighbor."
+   },
+   "free": {
+    "q": "Как бы вы завязали разговор с незнакомцем на конференции?",
+    "sample": "I'd strike up a conversation by asking what they thought of the last talk."
+   }
+  },
+  {
+   "id": "have-an-argument",
+   "en": "have an argument",
+   "ru": "поссориться, поругаться",
+   "topic": "Разговор",
+   "lesson": 37,
+   "err": "make an argument — это «привести довод», а не «поссориться»",
+   "ex": [
+    "I had an argument with my brother yesterday.",
+    "They're always having arguments about housework."
+   ],
+   "ctx": "We [had an argument] about where to go on vacation.",
+   "mean": [
+    "прийти к согласию",
+    "привести свой довод"
+   ],
+   "form": {
+    "s": "They ___ an argument about money last night.",
+    "a": "had",
+    "d": [
+     "made",
+     "did"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "She isn't speaking to him — they ___ this morning.",
+     "ru": "поссорились",
+     "a": [
+      "had an argument"
+     ]
+    },
+    {
+     "s": "I don't want to ___ about this again.",
+     "ru": "ссориться",
+     "a": [
+      "have an argument"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Вчера я поссорился с сестрой.",
+    "en": "I had an argument with my sister yesterday."
+   },
+   "free": {
+    "q": "Когда вы в последний раз с кем-то спорили и о чём?",
+    "sample": "I had an argument with my roommate about who should do the dishes."
+   }
+  },
+  {
+   "id": "straight-to-the-point",
+   "en": "get straight to the point",
+   "ru": "перейти сразу к делу",
+   "topic": "Разговор",
+   "lesson": 37,
+   "ex": [
+    "Let me get straight to the point.",
+    "She doesn't waste words; she gets straight to the point."
+   ],
+   "ctx": "I don't have much time, so I'll [get straight to the point].",
+   "mean": [
+    "уйти от прямого ответа",
+    "повторять одно и то же"
+   ],
+   "form": {
+    "s": "I'll get ___ to the point: we need more money.",
+    "a": "straight",
+    "d": [
+     "direct",
+     "strict"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "We only have five minutes, so let's ___.",
+     "ru": "перейдём сразу к делу",
+     "a": [
+      "get straight to the point"
+     ]
+    },
+    {
+     "s": "He never chats first — he always ___.",
+     "ru": "сразу переходит к делу",
+     "a": [
+      "gets straight to the point"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Давайте сразу перейдём к делу.",
+    "en": "Let's get straight to the point."
+   },
+   "free": {
+    "q": "Вы звоните в сервис с проблемой. Начните разговор без лишних слов.",
+    "sample": "Hi, I'll get straight to the point: my internet hasn't worked since Monday."
+   }
+  },
+  {
+   "id": "drop-hints",
+   "en": "drop hints",
+   "ru": "намекать",
+   "topic": "Разговор",
+   "lesson": 37,
+   "ex": [
+    "He kept dropping hints that he wanted to be invited.",
+    "I dropped a hint, but she didn't notice."
+   ],
+   "ctx": "My sister keeps [dropping hints] about what she wants for Christmas.",
+   "mean": [
+    "говорить прямо",
+    "хранить в тайне"
+   ],
+   "form": {
+    "s": "She's been ___ hints about her birthday present.",
+    "a": "dropping",
+    "d": [
+     "throwing",
+     "putting"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "He won't say it directly; he just ___.",
+     "ru": "намекает",
+     "a": [
+      "drops hints"
+     ]
+    },
+    {
+     "s": "I've been ___ all week, but nobody has noticed.",
+     "ru": "намекаю",
+     "a": [
+      "dropping hints"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Она намекает, что хочет в отпуск.",
+    "en": "She's dropping hints that she wants a vacation."
+   },
+   "free": {
+    "q": "Как вы даёте понять, что хотите в подарок: говорите прямо или намекаете?",
+    "sample": "I usually drop hints for a few weeks, and if that doesn't work, I just say it."
+   }
+  },
+  {
+   "id": "give-your-word",
+   "en": "give your word",
+   "ru": "дать слово",
+   "topic": "Разговор",
+   "lesson": 37,
+   "err": "give you a word — нужно притяжательное: my word, his word",
+   "ex": [
+    "I give you my word — I won't tell anyone.",
+    "He gave his word that he would pay me back."
+   ],
+   "ctx": "She [gave me her word] that she would keep it secret.",
+   "mean": [
+    "взять слово",
+    "забыть слово"
+   ],
+   "form": {
+    "s": "I ___ you my word that I'll be there.",
+    "a": "give",
+    "d": [
+     "tell",
+     "put"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "Don't worry, I won't be late. I ___.",
+     "ru": "даю тебе слово",
+     "a": [
+      "give you my word"
+     ]
+    },
+    {
+     "s": "He ___ that he'd finish it by Friday.",
+     "ru": "дал слово",
+     "a": [
+      "gave his word",
+      "gave me his word",
+      "gave us his word"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Даю тебе слово, я никому не скажу.",
+    "en": "I give you my word, I won't tell anyone."
+   },
+   "free": {
+    "q": "Пообещайте другу вернуть книгу к пятнице.",
+    "sample": "I give you my word, you'll have the book back by Friday."
+   }
+  },
+  {
+   "id": "ask-a-favor",
+   "en": "ask someone a favor",
+   "ru": "попросить об одолжении",
+   "topic": "Разговор",
+   "lesson": 37,
+   "ex": [
+    "Can I ask you a favor? I need a ride tomorrow.",
+    "She asked me a favor, and I couldn't say no."
+   ],
+   "ctx": "I need to [ask you a favor] — could you water my plants next week?",
+   "mean": [
+    "сделать кому-то одолжение",
+    "отказать кому-то в просьбе"
+   ],
+   "form": {
+    "s": "Can I ___ you a favor?",
+    "a": "ask",
+    "d": [
+     "make",
+     "tell"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "Could I ___? I need someone to check my email draft.",
+     "ru": "попросить тебя об одолжении",
+     "a": [
+      "ask you a favor",
+      "ask a favor"
+     ]
+    },
+    {
+     "s": "He only calls when he wants to ___.",
+     "ru": "попросить об одолжении",
+     "a": [
+      "ask a favor",
+      "ask me a favor"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Можно попросить тебя об одолжении?",
+    "en": "Can I ask you a favor?"
+   },
+   "free": {
+    "q": "Попросите соседа присмотреть за котом на выходных.",
+    "sample": "Can I ask you a favor? Could you feed my cat this weekend?"
+   }
+  },
+  {
+   "id": "go-on-and-on",
+   "en": "go on and on",
+   "ru": "говорить без умолку",
+   "topic": "Разговор",
+   "lesson": 37,
+   "ex": [
+    "She went on and on about her vacation.",
+    "Sorry, I'm going on and on — tell me about you."
+   ],
+   "ctx": "My uncle [went on and on] about politics all evening.",
+   "mean": [
+    "говорить по существу",
+    "делать долгую паузу"
+   ],
+   "form": {
+    "s": "He ___ on and on about his new car.",
+    "a": "went",
+    "d": [
+     "said",
+     "came"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I stopped listening because he just ___ about his job.",
+     "ru": "говорил без умолку",
+     "a": [
+      "went on and on"
+     ]
+    },
+    {
+     "s": "I don't want to ___, so I'll keep it short.",
+     "ru": "говорить без умолку",
+     "a": [
+      "go on and on"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Он всё говорил и говорил о своей машине.",
+    "en": "He went on and on about his car."
+   },
+   "free": {
+    "q": "О чём вы можете говорить без остановки?",
+    "sample": "I can go on and on about hiking — my friends have stopped asking."
+   }
+  },
+  {
+   "id": "totally-agree",
+   "en": "I totally agree",
+   "ru": "полностью согласен",
+   "topic": "Согласие",
+   "lesson": 42,
+   "err": "I'm agree — частая ошибка, верно I agree",
+   "ex": [
+    "I totally agree — it's too expensive.",
+    "I totally agree with what you said about the plan."
+   ],
+   "ctx": "You think we should wait? [I totally agree].",
+   "mean": [
+    "согласен лишь отчасти",
+    "совсем не согласен"
+   ],
+   "form": {
+    "s": "I ___ agree with you.",
+    "a": "totally",
+    "d": [
+     "highly",
+     "very"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "That's exactly what I think. ___ with you.",
+     "ru": "Полностью согласен",
+     "a": [
+      "I totally agree"
+     ]
+    },
+    {
+     "s": "— We need a break. — ___. Let's go for coffee.",
+     "ru": "Полностью согласен",
+     "a": [
+      "I totally agree"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Полностью согласен с тобой.",
+    "en": "I totally agree with you."
+   },
+   "free": {
+    "q": "Согласитесь с мнением: «Учить язык лучше понемногу каждый день».",
+    "sample": "I totally agree — ten minutes a day works better than two hours once a week."
+   }
+  },
+  {
+   "id": "up-to-a-point",
+   "en": "agree up to a point",
+   "ru": "согласиться отчасти",
+   "topic": "Согласие",
+   "lesson": 42,
+   "err": "agree until a point — неверный предлог",
+   "ex": [
+    "I agree up to a point, but I think it's more complicated.",
+    "She agreed with the plan up to a point."
+   ],
+   "ctx": "I [agree up to a point], but we also need to think about the cost.",
+   "mean": [
+    "согласиться полностью",
+    "согласиться неохотно"
+   ],
+   "form": {
+    "s": "I agree with you up to a ___.",
+    "a": "point",
+    "d": [
+     "limit",
+     "place"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "It's a good idea, and I ___, but there are risks.",
+     "ru": "отчасти согласен",
+     "a": [
+      "agree up to a point"
+     ]
+    },
+    {
+     "s": "I ___ — remote work is great, but not for everyone.",
+     "ru": "согласен отчасти",
+     "a": [
+      "agree up to a point"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Я согласен отчасти.",
+    "en": "I agree up to a point."
+   },
+   "free": {
+    "q": "Отчасти согласитесь с мнением: «Соцсети только вредят».",
+    "sample": "I agree up to a point, but social media also helps me stay in touch with friends."
+   }
+  },
+  {
+   "id": "afraid-i-disagree",
+   "en": "I'm afraid I disagree",
+   "ru": "боюсь, я не согласен",
+   "topic": "Согласие",
+   "lesson": 42,
+   "err": "I'm not agree — верно I disagree или I don't agree",
+   "ex": [
+    "I'm afraid I disagree — I think the old design was better.",
+    "I'm afraid I disagree with your conclusion."
+   ],
+   "ctx": "[I'm afraid I disagree]; the problem isn't money, it's time.",
+   "mean": [
+    "к сожалению, я не понял",
+    "пожалуй, я соглашусь"
+   ],
+   "form": {
+    "s": "I'm ___ I disagree with you there.",
+    "a": "afraid",
+    "d": [
+     "scared",
+     "fearful"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "___ — I don't think that's the best solution.",
+     "ru": "Боюсь, я не согласен",
+     "a": [
+      "I'm afraid I disagree",
+      "I am afraid I disagree"
+     ]
+    },
+    {
+     "s": "That's an interesting idea, but ___.",
+     "ru": "боюсь, я не согласен",
+     "a": [
+      "I'm afraid I disagree",
+      "I am afraid I disagree"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Боюсь, я не согласен.",
+    "en": "I'm afraid I disagree."
+   },
+   "free": {
+    "q": "Вежливо возразите: «Английский можно выучить за месяц».",
+    "sample": "I'm afraid I disagree — you can learn the basics in a month, but not the language."
+   }
+  },
+  {
+   "id": "see-your-point",
+   "en": "I see your point",
+   "ru": "понимаю вашу мысль",
+   "topic": "Согласие",
+   "lesson": 42,
+   "ex": [
+    "I see your point, but I'm not sure it will work.",
+    "Yes, I see your point about the price."
+   ],
+   "ctx": "[I see your point], but have you thought about the risks?",
+   "mean": [
+    "я с вами согласен",
+    "я вас не расслышал"
+   ],
+   "form": {
+    "s": "I ___ your point, but I still think we should wait.",
+    "a": "see",
+    "d": [
+     "look",
+     "watch"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "___, but I look at it differently.",
+     "ru": "Понимаю твою мысль",
+     "a": [
+      "I see your point"
+     ]
+    },
+    {
+     "s": "OK, ___ — it really is too far to walk.",
+     "ru": "понимаю твою мысль",
+     "a": [
+      "I see your point"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Понимаю твою мысль, но я не согласен.",
+    "en": "I see your point, but I disagree."
+   },
+   "free": {
+    "q": "Покажите, что поняли довод, и добавьте своё «но»: «Машина в городе не нужна».",
+    "sample": "I see your point, but with two small kids a car makes life much easier."
+   }
+  },
+  {
+   "id": "reach-a-compromise",
+   "en": "reach a compromise",
+   "ru": "прийти к компромиссу",
+   "topic": "Согласие",
+   "lesson": 42,
+   "err": "arrive to a compromise — неверный глагол",
+   "ex": [
+    "After two hours, they reached a compromise.",
+    "We need to reach a compromise that works for everyone."
+   ],
+   "ctx": "My roommate and I [reached a compromise] about the cleaning.",
+   "mean": [
+    "отказаться от компромисса",
+    "предложить свой компромисс"
+   ],
+   "form": {
+    "s": "We finally ___ a compromise.",
+    "a": "reached",
+    "d": [
+     "arrived",
+     "entered"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "Neither of us was happy, but in the end we ___.",
+     "ru": "пришли к компромиссу",
+     "a": [
+      "reached a compromise"
+     ]
+    },
+    {
+     "s": "Let's try to ___ instead of arguing.",
+     "ru": "прийти к компромиссу",
+     "a": [
+      "reach a compromise"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "В итоге мы пришли к компромиссу.",
+    "en": "In the end, we reached a compromise."
+   },
+   "free": {
+    "q": "Расскажите о случае, когда вы с кем-то нашли компромисс.",
+    "sample": "My wife and I reached a compromise: mountains this year, the sea next year."
+   }
+  },
+  {
+   "id": "agree-to-disagree",
+   "en": "agree to disagree",
+   "ru": "остаться каждый при своём мнении",
+   "topic": "Согласие",
+   "lesson": 42,
+   "ex": [
+    "We'll never think the same about this, so let's agree to disagree.",
+    "They agreed to disagree and changed the subject."
+   ],
+   "ctx": "We couldn't convince each other, so we [agreed to disagree].",
+   "mean": [
+    "согласиться только из вежливости",
+    "передумать после долгого спора"
+   ],
+   "form": {
+    "s": "Let's just agree to ___.",
+    "a": "disagree",
+    "d": [
+     "argue",
+     "refuse"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I don't want to argue all night. Let's ___.",
+     "ru": "останемся каждый при своём",
+     "a": [
+      "agree to disagree"
+     ]
+    },
+    {
+     "s": "After an hour of discussion, we simply ___.",
+     "ru": "остались каждый при своём",
+     "a": [
+      "agreed to disagree"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Давай останемся каждый при своём мнении.",
+    "en": "Let's agree to disagree."
+   },
+   "free": {
+    "q": "Спор о лучшем фильме зашёл в тупик. Завершите его мирно.",
+    "sample": "We clearly have different tastes — let's agree to disagree and order pizza."
+   }
+  },
+  {
+   "id": "make-a-decision",
+   "en": "make a decision",
+   "ru": "принять решение",
+   "topic": "Решения",
+   "lesson": 44,
+   "err": "do a decision — неверный глагол",
+   "ex": [
+    "I need more time to make a decision.",
+    "She made the decision to move abroad."
+   ],
+   "ctx": "We have to [make a decision] before the end of the week.",
+   "mean": [
+    "отложить решение",
+    "изменить решение"
+   ],
+   "form": {
+    "s": "You need to ___ a decision by Friday.",
+    "a": "make",
+    "d": [
+     "do",
+     "accept"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "Think about it carefully before you ___.",
+     "ru": "примешь решение",
+     "a": [
+      "make a decision"
+     ]
+    },
+    {
+     "s": "It was hard, but I finally ___ to change jobs.",
+     "ru": "принял решение",
+     "a": [
+      "made a decision",
+      "made the decision"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Мне нужно принять решение до завтра.",
+    "en": "I need to make a decision by tomorrow."
+   },
+   "free": {
+    "q": "Какое решение вам нужно принять в ближайшее время?",
+    "sample": "I need to make a decision about where to spend my vacation."
+   }
+  },
+  {
+   "id": "tough-decision",
+   "en": "a tough decision",
+   "ru": "трудное решение",
+   "topic": "Решения",
+   "lesson": 44,
+   "err": "a heavy decision — калька с «тяжёлое решение»",
+   "ex": [
+    "It was a tough decision, but I think it was the right one.",
+    "Choosing between the two offers is a tough decision."
+   ],
+   "ctx": "Selling the house was [a tough decision] for my parents.",
+   "mean": [
+    "быстрое решение",
+    "верное решение"
+   ],
+   "form": {
+    "s": "Leaving my job was a ___ decision.",
+    "a": "tough",
+    "d": [
+     "heavy",
+     "strong"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "Both options look good — it's ___.",
+     "ru": "трудное решение",
+     "a": [
+      "a tough decision"
+     ]
+    },
+    {
+     "s": "Moving to another city was ___ for the whole family.",
+     "ru": "трудным решением",
+     "a": [
+      "a tough decision"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Это было трудное решение.",
+    "en": "It was a tough decision."
+   },
+   "free": {
+    "q": "Расскажите о трудном решении, которое вам пришлось принять.",
+    "sample": "Quitting my first job was a tough decision because I liked the team."
+   }
+  },
+  {
+   "id": "pros-and-cons",
+   "en": "pros and cons",
+   "ru": "за и против",
+   "topic": "Решения",
+   "lesson": 44,
+   "ex": [
+    "We discussed the pros and cons of working from home.",
+    "Every option has its pros and cons."
+   ],
+   "ctx": "Before buying a car, I wrote down all the [pros and cons].",
+   "mean": [
+    "цели и средства",
+    "причины и итоги"
+   ],
+   "form": {
+    "s": "Let's make a list of the pros and ___.",
+    "a": "cons",
+    "d": [
+     "contras",
+     "minuses"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I can't decide yet — I need to think about the ___.",
+     "ru": "за и против",
+     "a": [
+      "pros and cons"
+     ]
+    },
+    {
+     "s": "What are the ___ of living in a big city?",
+     "ru": "плюсы и минусы",
+     "a": [
+      "pros and cons"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Давай взвесим все за и против.",
+    "en": "Let's weigh the pros and cons."
+   },
+   "free": {
+    "q": "Назовите плюсы и минусы удалённой работы, используя это выражение.",
+    "sample": "The pros and cons of remote work are clear: more freedom, but less contact with people."
+   }
+  },
+  {
+   "id": "take-advice",
+   "en": "take someone's advice",
+   "ru": "последовать совету",
+   "topic": "Решения",
+   "lesson": 44,
+   "err": "take an advice — advice неисчисляемое, без артикля an",
+   "ex": [
+    "I took your advice and called her.",
+    "Take my advice — don't buy that phone."
+   ],
+   "ctx": "I [took my father's advice] and saved some money.",
+   "mean": [
+    "попросить совета",
+    "пренебречь советом"
+   ],
+   "form": {
+    "s": "I ___ your advice and went to the doctor.",
+    "a": "took",
+    "d": [
+     "made",
+     "held"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "You were right! I ___ and it worked.",
+     "ru": "последовал твоему совету",
+     "a": [
+      "took your advice"
+     ]
+    },
+    {
+     "s": "If you ___, you'll book the hotel now.",
+     "ru": "послушаешь моего совета",
+     "a": [
+      "take my advice"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Я последовал твоему совету.",
+    "en": "I took your advice."
+   },
+   "free": {
+    "q": "Чей совет вы однажды послушали и не пожалели?",
+    "sample": "I took my friend's advice and started running — best decision of the year."
+   }
+  },
+  {
+   "id": "second-thoughts",
+   "en": "have second thoughts",
+   "ru": "засомневаться в своём решении",
+   "topic": "Решения",
+   "lesson": 44,
+   "ex": [
+    "I'm having second thoughts about buying that apartment.",
+    "She said yes, but then she had second thoughts."
+   ],
+   "ctx": "We booked the tickets, but now I'm [having second thoughts].",
+   "mean": [
+    "окончательно решиться на что-то",
+    "придумать себе запасной план"
+   ],
+   "form": {
+    "s": "I'm ___ second thoughts about the trip.",
+    "a": "having",
+    "d": [
+     "making",
+     "doing"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I agreed to move, but now I'm ___.",
+     "ru": "начинаю сомневаться",
+     "a": [
+      "having second thoughts"
+     ]
+    },
+    {
+     "s": "He accepted the job and then ___.",
+     "ru": "засомневался",
+     "a": [
+      "had second thoughts"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Я начал сомневаться насчёт этой поездки.",
+    "en": "I'm having second thoughts about this trip."
+   },
+   "free": {
+    "q": "О каком своём решении вы потом засомневались?",
+    "sample": "I signed up for a marathon, and now I'm having second thoughts."
+   }
+  },
+  {
+   "id": "options-open",
+   "en": "keep your options open",
+   "ru": "оставить себе свободу выбора",
+   "topic": "Решения",
+   "lesson": 44,
+   "ex": [
+    "I haven't decided yet; I'm keeping my options open.",
+    "Don't sign anything — keep your options open."
+   ],
+   "ctx": "I'm applying to several companies to [keep my options open].",
+   "mean": [
+    "сделать окончательный выбор",
+    "упустить хорошую возможность"
+   ],
+   "form": {
+    "s": "I want to ___ my options open for now.",
+    "a": "keep",
+    "d": [
+     "hold",
+     "save"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I haven't said yes to anyone yet. I want to ___.",
+     "ru": "оставить себе свободу выбора",
+     "a": [
+      "keep my options open"
+     ]
+    },
+    {
+     "s": "She didn't accept the first offer because she was ___.",
+     "ru": "оставляла себе свободу выбора",
+     "a": [
+      "keeping her options open"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Я пока оставляю себе свободу выбора.",
+    "en": "I'm keeping my options open for now."
+   },
+   "free": {
+    "q": "Вас спрашивают о планах на лето, а вы ещё не решили. Ответьте.",
+    "sample": "Nothing is booked yet — I'm keeping my options open until June."
+   }
+  },
+  {
+   "id": "no-choice",
+   "en": "have no choice",
+   "ru": "не иметь выбора",
+   "topic": "Решения",
+   "lesson": 44,
+   "err": "have no choice than to — верно have no choice but to",
+   "ex": [
+    "I had no choice — the last bus had gone.",
+    "We have no choice but to cancel."
+   ],
+   "ctx": "The flight was canceled, so we [had no choice] but to stay another night.",
+   "mean": [
+    "иметь богатый выбор",
+    "сделать свой выбор"
+   ],
+   "form": {
+    "s": "I ___ no choice but to wait.",
+    "a": "had",
+    "d": [
+     "made",
+     "took"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I didn't want to pay, but I ___.",
+     "ru": "у меня не было выбора",
+     "a": [
+      "had no choice"
+     ]
+    },
+    {
+     "s": "If it rains, we'll ___ but to cancel the picnic.",
+     "ru": "не будет выбора",
+     "a": [
+      "have no choice"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "У меня не было выбора.",
+    "en": "I had no choice."
+   },
+   "free": {
+    "q": "Когда вам пришлось сделать что-то, потому что другого выхода не было?",
+    "sample": "My laptop broke before a deadline, so I had no choice but to buy a new one."
+   }
+  },
+  {
+   "id": "snap-decision",
+   "en": "a snap decision",
+   "ru": "мгновенное решение",
+   "topic": "Решения",
+   "lesson": 44,
+   "ex": [
+    "It was a snap decision, and I regretted it later.",
+    "I made a snap decision to join them."
+   ],
+   "ctx": "Buying the puppy was [a snap decision], but we never regretted it.",
+   "mean": [
+    "взвешенное решение",
+    "ошибочное решение"
+   ],
+   "form": {
+    "s": "Don't make a ___ decision — think it over.",
+    "a": "snap",
+    "d": [
+     "flash",
+     "click"
+    ]
+   },
+   "gaps": [
+    {
+     "s": "I didn't plan it; it was ___.",
+     "ru": "мгновенное решение",
+     "a": [
+      "a snap decision"
+     ]
+    },
+    {
+     "s": "He's careful with money and never makes ___.",
+     "ru": "мгновенных решений",
+     "a": [
+      "snap decisions",
+      "a snap decision"
+     ]
+    }
+   ],
+   "tr": {
+    "ru": "Это было мгновенное решение.",
+    "en": "It was a snap decision."
+   },
+   "free": {
+    "q": "Какое решение вы приняли за секунду?",
+    "sample": "I made a snap decision to cut my hair short, and I love it."
+   }
+  }
+ ]
+}
