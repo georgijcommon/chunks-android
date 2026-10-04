@@ -56,6 +56,7 @@ public class MainActivity extends Activity {
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);   // прогресс хранится в localStorage
         s.setTextZoom(100);
+        s.setMediaPlaybackRequiresUserGesture(false);   // озвучка слова при показе карточки
 
         web.addJavascriptInterface(new Bridge(), "Android");
         web.setWebViewClient(new WebViewClient() {

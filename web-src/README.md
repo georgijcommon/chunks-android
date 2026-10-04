@@ -1,13 +1,17 @@
-# Исходники страницы тренажёра
+# Исходники страницы приложения
 
-`build.py` собирает из этих файлов одну страницу `english-chunks.html`
-(она же `app/src/main/assets/index.html` в приложении).
+`build2.py` собирает одну страницу `chunks.html` (она же
+`app/src/main/assets/index.html`).
 
-- `app.html` — разметка и стили
-- `app.js` — логика
+- `code.js`, `data.js`, `style1.css` — код, данные и стили приложения «Иней»
+  (слова, картинки, озвучка, экраны), разложенные на части без изменений
+- `build2.py` — правки поверх кода «Инея» и сборка
+- `pre.js`, `extra.js` — объединяющий слой: расписание FSRS, выражения с
+  упражнениями на применение, чтение текстов с переводом, файлы
 - `fsrs.js` — расписание повторений (FSRS-6)
-- `deck.json` — встроенная колода, 30 выражений
-- `pics.json` — иллюстрации
+- `deck.json`, `pics.json` — 30 выражений и их иллюстрации
+- `e2e4.js` — проверка в браузере (Playwright)
 
-Шрифты берутся из пакетов `@fontsource-variable/cormorant-garamond` и
-`@fontsource-variable/manrope` (`npm i` перед сборкой).
+Пути в `build2.py` рассчитаны на рабочее окружение, в котором велась сборка;
+шрифты берутся из пакетов `@fontsource-variable/cormorant-garamond` и
+`@fontsource-variable/onest`.

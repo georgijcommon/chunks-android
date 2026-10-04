@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg">#F6F3EC</color>
-    <color name="panel">#FBF9F4</color>
-    <color name="icon_bg">#0E1A2B</color>
-    <color name="icon_fg">#C9A464</color>
+    <color name="bg">#F7FAFC</color>
+    <color name="panel">#ECF2F7</color>
+    <color name="icon_bg">#0A1521</color>
+    <color name="icon_fg">#FFE29A</color>
 </resources>
